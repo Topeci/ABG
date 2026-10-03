@@ -1,0 +1,22 @@
+{
+  "name": "indenie-brunch-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.35",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "resend": "^4.0.1",
+    "qrcode": "^1.5.4",
+    "html5-qrcode": "^2.3.8",
+    "@resvg/resvg-js": "^2.6.2",
+    "image-size": "^1.1.1"
+  }
+}
