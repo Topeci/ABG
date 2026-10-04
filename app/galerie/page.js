@@ -1,7 +1,6 @@
 import Link from "next/link";
 import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
-import DrumMark from "../components/DrumMark";
 import { EDITIONS } from "../../lib/editions";
 
 export const metadata = {
@@ -15,9 +14,6 @@ export default function GaleriePage() {
       <NavBar />
 
       <section className="section" style={{ paddingTop: 90 }}>
-        <div className="section-mark">
-          <DrumMark />
-        </div>
         <div
           style={{
             display: "flex",

@@ -1,6 +1,5 @@
 import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
-import DrumMark from "../components/DrumMark";
 import { STEPS } from "../../lib/programme";
 
 export const metadata = {
@@ -14,9 +13,6 @@ export default function ProgrammePage() {
       <NavBar />
 
       <section className="section" style={{ background: "#FBF8F2", paddingTop: 90 }}>
-        <div className="section-mark">
-          <DrumMark />
-        </div>
         <h2
           style={{
             textAlign: "center",

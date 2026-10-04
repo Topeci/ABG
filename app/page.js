@@ -25,7 +25,8 @@ export default function Home() {
   const currentStandard = getCurrentStandardTier();
   const currentTierIndex = STANDARD_TIERS.findIndex((t) => t.id === currentStandard.id);
   const nextTier = STANDARD_TIERS[currentTierIndex + 1];
-  const latestActus = ACTUS.slice(0, 2);
+  const doorTier = STANDARD_TIERS[STANDARD_TIERS.length - 1];
+  const latestActus = ACTUS.slice(0, 3);
   const programmePreview = STEPS.slice(0, 3);
   const galeriePreview = EDITIONS.slice(-4);
   return (
@@ -100,7 +101,7 @@ export default function Home() {
           </div>
           <div className="about-img">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/gallery/evt-09-trio-hommes.jpg" alt="Ambiance Indénié Brunch" />
+            <img src="/images/gallery/evt-35-groupe-torches.jpg" alt="Ambiance Indénié Brunch" />
           </div>
         </div>
       </section>
@@ -200,6 +201,12 @@ export default function Home() {
             </p>
           )}
 
+          {doorTier && (
+            <p className="billet-promo-urgency">
+              Tarif jour J : <strong>{formatFCFA(doorTier.amount)}</strong>
+            </p>
+          )}
+
           <div className="billet-promo-perks">
             <span>✓ Paiement Wave &amp; Orange Money</span>
             <span>✓ Billet avec QR code envoyé par email</span>
@@ -228,7 +235,7 @@ export default function Home() {
             Voir toutes les actus
           </Link>
         </div>
-        <div className="news-grid-3" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+        <div className="news-grid-3">
           {latestActus.map((a) => (
             <a key={a.id} href={a.url} target="_blank" rel="noopener noreferrer" className="news-card">
               {a.image ? (

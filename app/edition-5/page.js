@@ -1,6 +1,5 @@
 import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
-import DrumMark from "../components/DrumMark";
 import TicketBooking from "../components/TicketBooking";
 import Countdown from "../components/Countdown";
 
@@ -16,9 +15,6 @@ export default function Edition5Page() {
       <NavBar />
 
       <section className="section" style={{ paddingTop: 90 }}>
-        <div className="section-mark">
-          <DrumMark />
-        </div>
         <div className="section-heading">
           <span className="eyebrow-label">NOUVELLE ÉDITION</span>
           <h2>Édition 5 — Festival</h2>

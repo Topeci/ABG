@@ -1,6 +1,5 @@
 import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
-import DrumMark from "../components/DrumMark";
 import { ACTUS } from "../../lib/actus";
 
 export const metadata = {
@@ -22,9 +21,6 @@ export default function ActusPage() {
       <NavBar />
 
       <section className="section" style={{ paddingTop: 90 }}>
-        <div className="section-mark">
-          <DrumMark />
-        </div>
         <div className="news-split" style={{ marginTop: 40 }}>
           <div className="news-split-heading">
             <h2>Actus</h2>
