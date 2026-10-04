@@ -1121,9 +1121,9 @@ img {
 }
 .billetterie-banner {
   width: 100%;
-  max-width: 1100px;
+  max-width: 640px;
   margin: 0 auto;
-  aspect-ratio: 6250 / 2022;
+  aspect-ratio: 1800 / 1458;
   overflow: hidden;
 }
 .billetterie-banner img {
@@ -1743,7 +1743,7 @@ img {
 
 @media (max-width: 960px) {
   .billetterie-banner {
-    max-width: 100%;
+    max-width: 420px;
   }
 }
 
