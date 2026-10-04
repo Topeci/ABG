@@ -17,6 +17,7 @@ export default function NavBar() {
         <span></span>
       </label>
       <div className="nav-links">
+        <Link href="/">Accueil</Link>
         <Link href="/evenement">L&apos;événement</Link>
         <Link href="/programme">Programme</Link>
         <Link href="/galerie">Galerie</Link>

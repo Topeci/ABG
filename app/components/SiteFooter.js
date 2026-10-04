@@ -8,7 +8,9 @@ export default function SiteFooter() {
         <div className="footer-social">
           <span>Reste connecté</span>
           <a
-            href="#"
+            href="https://www.instagram.com/indenie_brunch/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
             style={{
               width: 34,

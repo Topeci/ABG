@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
-import SunMark from "../components/SunMark";
+import DrumMark from "../components/DrumMark";
 import { STEPS } from "../../lib/programme";
 
 export const metadata = {
@@ -15,7 +15,7 @@ export default function ProgrammePage() {
 
       <section className="section" style={{ background: "#FBF8F2", paddingTop: 90 }}>
         <div className="section-mark">
-          <SunMark />
+          <DrumMark />
         </div>
         <h2
           style={{

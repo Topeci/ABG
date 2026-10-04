@@ -6,6 +6,7 @@ import { getCurrentStandardTier, STANDARD_INCLUDES, STANDARD_TIERS } from "../li
 import { ACTUS } from "../lib/actus";
 import { EDITIONS } from "../lib/editions";
 import { STEPS } from "../lib/programme";
+import { PARTNERS } from "../lib/partners";
 
 function formatFCFA(n) {
   return n.toLocaleString("fr-FR") + " FCFA";
@@ -26,7 +27,7 @@ export default function Home() {
   const nextTier = STANDARD_TIERS[currentTierIndex + 1];
   const latestActus = ACTUS.slice(0, 2);
   const programmePreview = STEPS.slice(0, 3);
-  const galeriePreview = EDITIONS.slice(0, 4);
+  const galeriePreview = EDITIONS.slice(-4);
   return (
     <main>
       <NavBar />
@@ -173,7 +174,7 @@ export default function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logo.png" alt="Indénié Brunch" className="billet-promo-logo" />
 
-          <span className="billet-promo-eyebrow">Places limitées — Édition Festival</span>
+          <span className="billet-promo-eyebrow">Places limitées</span>
           <h2 className="billet-promo-title">Réserve ta place</h2>
           <p className="billet-promo-sub">
             {STANDARD_INCLUDES}. Accès général, ambiance garantie — ne laisse
@@ -246,6 +247,42 @@ export default function Home() {
               <h3>{a.title}</h3>
             </a>
           ))}
+        </div>
+      </section>
+
+      {/* PARTENAIRES — aperçu */}
+      <section className="section" style={{ background: "#FBF8F2" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
+            gap: 16,
+            marginBottom: 32,
+          }}
+        >
+          <div>
+            <span className="eyebrow-label">PARTENAIRES</span>
+            <h2 style={{ margin: "6px 0 0" }}>Ils soutiennent l&apos;Indénié Brunch</h2>
+          </div>
+          <Link href="/partenaire" className="pill-outline">
+            Devenir partenaire
+          </Link>
+        </div>
+        <div className="partners-grid">
+          {PARTNERS.map((p) =>
+            p.img ? (
+              <div key={p.name} className="partner-logo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.img} alt={p.name} />
+              </div>
+            ) : (
+              <div key={p.name} className="partner-logo partner-logo-text">
+                {p.name}
+              </div>
+            )
+          )}
         </div>
       </section>
 

@@ -7,7 +7,7 @@ export default function CartBadge() {
   const { totalQty } = useCart();
 
   return (
-    <Link href="/billetterie" className="nav-cart" aria-label="Voir mon panier">
+    <Link href="/panier" className="nav-cart" aria-label="Voir mon panier">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <circle cx="9" cy="21" r="1.4" fill="currentColor" stroke="none" />
         <circle cx="19" cy="21" r="1.4" fill="currentColor" stroke="none" />

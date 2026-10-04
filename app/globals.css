@@ -661,6 +661,9 @@ img {
 .cart-panel-header {
   margin-bottom: 18px;
 }
+.cart-panel-empty {
+  text-align: center;
+}
 .cart-lines {
   display: flex;
   flex-direction: column;
@@ -802,7 +805,7 @@ img {
   text-align: center;
   background: #733b1a;
   border-radius: 10px;
-  border: 1px solid rgba(191, 129, 75, 0.4);
+  border: 2px dashed rgba(191, 129, 75, 0.6);
 }
 .billet-promo-logo {
   height: 130px;
@@ -1138,27 +1141,37 @@ img {
   right: 50%;
   bottom: 40px;
   transform: translateX(50%);
-  background: var(--ink);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #16a34a;
+  border: 2px solid #ffffff;
   backdrop-filter: none;
-  padding: 16px 30px;
-  border-radius: 6px;
+  padding: 18px 34px;
+  border-radius: 999px;
+  box-shadow: 0 10px 32px rgba(22, 163, 74, 0.55);
+  animation: heroBadgePulse 2.2s ease-in-out infinite;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.15s ease;
+  transition: transform 0.15s ease;
 }
 .hero-teaser-badge-flashy:hover {
-  background: #5c2f15;
+  transform: translateX(50%) scale(1.04);
 }
 .hero-teaser-badge-flashy::before {
   content: none;
 }
 .hero-teaser-badge-flashy span {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 17px;
   color: #ffffff;
   letter-spacing: 0.5px;
   text-transform: none;
+}
+@keyframes heroBadgePulse {
+  0%, 100% {
+    box-shadow: 0 10px 32px rgba(22, 163, 74, 0.55);
+  }
+  50% {
+    box-shadow: 0 10px 44px rgba(22, 163, 74, 0.85);
+  }
 }
 .hero-full-overlay {
   position: absolute;
