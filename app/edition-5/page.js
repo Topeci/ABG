@@ -2,6 +2,7 @@ import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
 import SunMark from "../components/SunMark";
 import TicketBooking from "../components/TicketBooking";
+import Countdown from "../components/Countdown";
 
 export const metadata = {
   title: "Édition 5 — Festival — Indénié Brunch",
@@ -50,7 +51,7 @@ export default function Edition5Page() {
         </div>
       </section>
 
-      <section className="section" style={{ background: "#733B1A", padding: "56px 64px" }}>
+      <section className="section" style={{ background: "#733B1A", padding: "48px 64px 44px" }}>
         <div className="practical-strip">
           <div className="practical-item">
             <span className="label" style={{ color: "#BF814B" }}>Date</span>
@@ -69,6 +70,10 @@ export default function Edition5Page() {
             <span className="value" style={{ color: "#FAF6EE" }}>Tout blanc</span>
           </div>
         </div>
+
+        <div className="countdown-divider" />
+        <span className="countdown-eyebrow">C&apos;est dans</span>
+        <Countdown />
       </section>
 
       <section className="section">

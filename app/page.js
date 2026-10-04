@@ -48,7 +48,7 @@ export default function Home() {
       </section>
 
       {/* INFOS PRATIQUES */}
-      <section className="section" style={{ background: "#733B1A", padding: "56px 64px" }}>
+      <section className="section" style={{ background: "#733B1A", padding: "48px 64px 44px" }}>
         <div className="practical-strip">
           <div className="practical-item">
             <span className="label" style={{ color: "#BF814B" }}>Date</span>
@@ -173,6 +173,9 @@ export default function Home() {
           <span className="billet-promo-notch billet-promo-notch-left" />
           <span className="billet-promo-notch billet-promo-notch-right" />
 
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo.png" alt="Indénié Brunch" className="billet-promo-logo" />
+
           <span className="billet-promo-eyebrow">⚡ Places limitées — Édition Festival</span>
           <h2 className="billet-promo-title">Réserve ta place</h2>
           <p className="billet-promo-sub">
@@ -180,14 +183,16 @@ export default function Home() {
             pas tes amis y aller sans toi.
           </p>
 
-          <div className="billet-promo-price">
-            <span className="billet-promo-price-tag">{currentStandard.shortLabel}</span>
-            <span className="billet-promo-price-amount">{formatFCFA(currentStandard.amount)}</span>
-          </div>
+          <div className="billet-promo-pills">
+            <div className="billet-promo-price">
+              <span className="billet-promo-price-tag">{currentStandard.shortLabel}</span>
+              <span className="billet-promo-price-amount">{formatFCFA(currentStandard.amount)}</span>
+            </div>
 
-          <Link href="/billetterie" className="billet-promo-cta">
-            Je réserve ma place →
-          </Link>
+            <Link href="/billetterie" className="billet-promo-cta">
+              Je réserve ma place →
+            </Link>
+          </div>
 
           {nextTier && (
             <p className="billet-promo-urgency">

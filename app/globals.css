@@ -766,7 +766,7 @@ img {
 .countdown-divider {
   width: 100%;
   max-width: 1280px;
-  margin: 40px auto 28px;
+  margin: 28px auto 18px;
   border-top: 1px solid rgba(250, 246, 238, 0.14);
 }
 .countdown-eyebrow {
@@ -776,7 +776,7 @@ img {
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: #bf814b;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 .countdown-row {
   display: flex;
@@ -851,7 +851,10 @@ img {
   margin: 0 auto;
   padding: 60px 48px;
   text-align: center;
-  background: radial-gradient(circle at 20% 15%, #8a4a22, #5a2d12 65%);
+  background-color: #733b1a;
+  background-image: radial-gradient(circle at 20% 15%, #8a4a22, #5a2d12 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Cg fill='none' stroke='%23BF814B' stroke-width='1' stroke-opacity='0.3'%3E%3Cpath d='M26 2L50 26L26 50L2 26Z'/%3E%3Ccircle cx='26' cy='26' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover, 52px 52px;
   border-radius: 24px;
   border: 2px dashed var(--accent-gold);
   overflow: hidden;
@@ -865,6 +868,7 @@ img {
   height: 36px;
   border-radius: 50%;
   background: #f2f2f2;
+  z-index: 2;
 }
 .billet-promo-notch-left {
   left: -18px;
@@ -872,7 +876,18 @@ img {
 .billet-promo-notch-right {
   right: -18px;
 }
+.billet-promo-logo {
+  height: 72px;
+  width: auto;
+  margin: 0 auto 22px;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+  position: relative;
+  z-index: 1;
+}
 .billet-promo-eyebrow {
+  position: relative;
+  z-index: 1;
   display: inline-block;
   font-size: 12px;
   font-weight: 700;
@@ -885,27 +900,41 @@ img {
   margin-bottom: 20px;
 }
 .billet-promo-title {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-display);
-  font-size: 46px;
+  font-size: 48px;
   font-weight: 700;
   text-transform: uppercase;
   color: #faf6ee;
   letter-spacing: 0.5px;
   margin: 0 0 16px;
+  text-shadow: 3px 3px 0 rgba(90, 45, 18, 0.55);
 }
 .billet-promo-sub {
+  position: relative;
+  z-index: 1;
   max-width: 460px;
   margin: 0 auto 28px;
   font-size: 15px;
   line-height: 1.7;
   color: #e9d9c4;
 }
+.billet-promo-pills {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
 .billet-promo-price {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 28px;
-  padding: 10px 22px;
+  padding: 10px 24px;
   border-radius: 999px;
   background: rgba(250, 246, 238, 0.08);
   border: 1px solid rgba(250, 246, 238, 0.25);
@@ -923,13 +952,14 @@ img {
   color: var(--accent-gold);
 }
 .billet-promo-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: #14110d;
   background: var(--accent-gold);
-  padding: 20px 48px;
+  padding: 10px 30px;
   border-radius: 999px;
   box-shadow: 0 0 0 0 rgba(191, 129, 75, 0.55);
   animation: billetPulse 2.4s ease-in-out infinite;
@@ -949,7 +979,9 @@ img {
   }
 }
 .billet-promo-urgency {
-  margin: 24px 0 0;
+  position: relative;
+  z-index: 1;
+  margin: 0;
   font-size: 13px;
   color: #e9d9c4;
 }
@@ -957,6 +989,8 @@ img {
   color: var(--accent-gold);
 }
 .billet-promo-perks {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -971,14 +1005,18 @@ img {
   .billet-promo {
     padding: 44px 24px;
   }
+  .billet-promo-logo {
+    height: 56px;
+  }
   .billet-promo-title {
     font-size: 32px;
   }
   .billet-promo-cta {
-    padding: 16px 32px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 15px;
   }
 }
+
 
 .payment-note {
   display: inline-flex;
