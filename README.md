@@ -18,6 +18,7 @@ npm run dev
 - `RESEND_API_KEY` — clé API Resend
 - `EMAIL_FROM` — adresse d'envoi (optionnel, par défaut onboarding@resend.dev en attendant un domaine vérifié)
 - `PARTNER_NOTIFY_EMAIL` — adresse qui reçoit les demandes du formulaire "Partenaire" (optionnel, sinon `EMAIL_FROM` est utilisé)
+- `CONTACT_NOTIFY_EMAIL` — adresse qui reçoit les messages du formulaire "Contact" (optionnel, sinon `PARTNER_NOTIFY_EMAIL` puis `EMAIL_FROM`)
 
 ## ⚠️ Mise à jour Supabase requise
 
