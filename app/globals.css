@@ -1783,3 +1783,78 @@ img {
     max-width: 180px;
   }
 }
+
+/* ---------- Édition 5 — festival background (green + white, bokeh/sparkle) ---------- */
+.edition5-page {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #0b2318;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 9%),
+    radial-gradient(circle at 82% 22%, rgba(235, 255, 240, 0.14) 0%, rgba(235, 255, 240, 0) 11%),
+    radial-gradient(circle at 70% 68%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 10%),
+    radial-gradient(circle at 25% 80%, rgba(235, 255, 240, 0.1) 0%, rgba(235, 255, 240, 0) 12%),
+    radial-gradient(ellipse at 50% 0%, rgba(143, 224, 168, 0.18) 0%, rgba(143, 224, 168, 0) 55%),
+    linear-gradient(160deg, #0d2b1c 0%, #123a26 35%, #0b2318 70%, #081a12 100%);
+}
+
+.edition5-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(circle, rgba(143, 224, 168, 0.85) 0%, rgba(143, 224, 168, 0) 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(circle, rgba(143, 224, 168, 0.8) 0%, rgba(143, 224, 168, 0) 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(circle, rgba(143, 224, 168, 0.75) 0%, rgba(143, 224, 168, 0) 100%);
+  background-repeat: no-repeat;
+  background-size:
+    3px 3px, 2px 2px, 4px 4px, 2px 2px, 3px 3px, 2px 2px, 3px 3px, 4px 4px;
+  background-position:
+    10% 8%, 22% 35%, 38% 14%, 55% 60%, 68% 30%, 78% 75%, 88% 18%, 92% 55%;
+  animation: edition5Sparkle 4s ease-in-out infinite;
+}
+
+@keyframes edition5Sparkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.edition5-page .section {
+  background: transparent;
+}
+
+.edition5-page .section-heading h2,
+.edition5-page .about-text h2,
+.edition5-page .about-text h3 {
+  color: #f2fbf4;
+}
+
+.edition5-page .section-heading p,
+.edition5-page .about-text p {
+  color: rgba(242, 251, 244, 0.78);
+}
+
+.edition5-page .eyebrow-label {
+  color: #8fe0a8;
+}
+
+.edition5-page .payment-note {
+  color: rgba(242, 251, 244, 0.78);
+}
+
+.edition5-page .payment-note strong {
+  color: #8fe0a8;
+}

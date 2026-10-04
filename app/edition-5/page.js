@@ -11,14 +11,14 @@ export const metadata = {
 
 export default function Edition5Page() {
   return (
-    <main>
+    <main className="edition5-page">
       <NavBar />
 
       <section className="section" style={{ paddingTop: 90 }}>
         <div className="section-heading">
           <span className="eyebrow-label">NOUVELLE ÉDITION</span>
           <h2>Édition 5 — Festival</h2>
-          <p style={{ marginTop: 12, color: "var(--ink-muted)", fontSize: 16, lineHeight: 1.75, maxWidth: 680 }}>
+          <p style={{ marginTop: 12, fontSize: 16, lineHeight: 1.75, maxWidth: 680 }}>
             Cette fois, l&apos;Indénié Brunch voit plus grand : une édition
             festival, avec encore plus de surprises, de musique et de
             moments à partager. Toujours le même dress code — tout blanc —
@@ -29,10 +29,10 @@ export default function Edition5Page() {
 
         <div className="about" style={{ marginTop: 40 }}>
           <div className="about-text">
-            <h3 style={{ fontSize: 24, color: "var(--ink)", marginBottom: 12 }}>
+            <h3 style={{ fontSize: 24, marginBottom: 12 }}>
               Visuels de communication
             </h3>
-            <p style={{ fontSize: 15, color: "var(--ink-muted)", lineHeight: 1.7 }}>
+            <p style={{ fontSize: 15, lineHeight: 1.7 }}>
               Les premières affiches de l&apos;édition festival sont déjà
               dehors — encore plus d&apos;infos et de surprises à venir.
             </p>
