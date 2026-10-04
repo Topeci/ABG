@@ -3,6 +3,7 @@ import Link from "next/link";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import { EDITIONS, getEdition } from "../../../lib/editions";
+import PhotoLightbox from "../../components/PhotoLightbox";
 
 export function generateStaticParams() {
   return EDITIONS.map((e) => ({ slug: e.slug }));
@@ -33,12 +34,7 @@ export default function EditionPage({ params }) {
         <Link href="/galerie" className="pill-outline" style={{ display: "inline-block", marginBottom: 32 }}>
           ← Retour à la galerie
         </Link>
-        <div className="edition-photos-grid">
-          {edition.photos.map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={src + i} src={src} alt={`${edition.title} — photo ${i + 1}`} />
-          ))}
-        </div>
+        <PhotoLightbox photos={edition.photos} title={edition.title} />
       </section>
 
       <SiteFooter />

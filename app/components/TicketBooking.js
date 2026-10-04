@@ -6,6 +6,7 @@ import {
   SALONS,
   STANDARD_INCLUDES,
 } from "../../lib/pricing";
+import { useCart } from "../../lib/cart-context";
 
 function formatFCFA(n) {
   return n.toLocaleString("fr-FR") + " FCFA";
@@ -37,7 +38,7 @@ const OFFERS = [
 const MAX_QTY_PER_OFFER = 10;
 
 export default function TicketBooking() {
-  const [cart, setCart] = useState({}); // { [offerId]: qty }
+  const { cart, addToCart: addToSharedCart, changeQty: changeSharedQty, removeFromCart: removeFromSharedCart, clearCart } = useCart();
   const [form, setForm] = useState({ full_name: "", email: "", phone: "" });
   const [status, setStatus] = useState("idle"); // idle | submitting | pending | confirming | done | error
   const [orderIds, setOrderIds] = useState([]);
@@ -58,30 +59,17 @@ export default function TicketBooking() {
 
   function addToCart(id) {
     if (locked) return;
-    setCart((c) => ({
-      ...c,
-      [id]: Math.min((c[id] || 0) + 1, MAX_QTY_PER_OFFER),
-    }));
+    addToSharedCart(id, MAX_QTY_PER_OFFER);
   }
 
   function changeQty(id, delta) {
     if (locked) return;
-    setCart((c) => {
-      const next = Math.max(0, Math.min((c[id] || 0) + delta, MAX_QTY_PER_OFFER));
-      const copy = { ...c };
-      if (next === 0) delete copy[id];
-      else copy[id] = next;
-      return copy;
-    });
+    changeSharedQty(id, delta, MAX_QTY_PER_OFFER);
   }
 
   function removeFromCart(id) {
     if (locked) return;
-    setCart((c) => {
-      const copy = { ...c };
-      delete copy[id];
-      return copy;
-    });
+    removeFromSharedCart(id);
   }
 
   async function handleSubmit(e) {
@@ -121,6 +109,7 @@ export default function TicketBooking() {
       });
       if (!res.ok) throw new Error();
       setStatus("done");
+      clearCart();
     } catch {
       setErrorMsg("Impossible de confirmer le paiement de test.");
       setStatus("error");
