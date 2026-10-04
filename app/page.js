@@ -67,9 +67,11 @@ export default function Home() {
             <span className="value" style={{ color: "#FAF6EE" }}>Tout blanc</span>
           </div>
         </div>
-      </section>
 
-      <Countdown />
+        <div className="countdown-divider" />
+        <span className="countdown-eyebrow">C&apos;est dans</span>
+        <Countdown />
+      </section>
 
       {/* ÉVÉNEMENT — aperçu */}
       <section className="section" style={{ paddingTop: 72 }}>

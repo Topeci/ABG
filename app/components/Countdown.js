@@ -20,6 +20,34 @@ function pad(n) {
   return String(n).padStart(2, "0");
 }
 
+const RADIUS = 42;
+const CIRC = 2 * Math.PI * RADIUS;
+
+function Ring({ value, max, label }) {
+  const frac = Math.min(1, value / max);
+  const dash = CIRC * frac;
+
+  return (
+    <div className="countdown-ring">
+      <div className="countdown-ring-circle">
+        <svg viewBox="0 0 100 100">
+          <circle className="countdown-ring-track" cx="50" cy="50" r={RADIUS} />
+          <circle
+            className="countdown-ring-arc"
+            cx="50"
+            cy="50"
+            r={RADIUS}
+            strokeDasharray={`${dash} ${CIRC - dash}`}
+            transform="rotate(-90 50 50)"
+          />
+        </svg>
+        <span className="countdown-ring-value">{pad(value)}</span>
+      </div>
+      <span className="countdown-ring-label">{label}</span>
+    </div>
+  );
+}
+
 export default function Countdown() {
   // null tant que pas monté côté client, pour éviter un écart serveur/navigateur
   const [t, setT] = useState(null);
@@ -32,27 +60,12 @@ export default function Countdown() {
 
   if (!t || t.over) return null;
 
-  const UNITS = [
-    { label: "Jours", value: t.days, pad: false },
-    { label: "Heures", value: t.hours, pad: true },
-    { label: "Minutes", value: t.minutes, pad: true },
-    { label: "Secondes", value: t.seconds, pad: true },
-  ];
-
   return (
-    <div className="countdown-wrap">
-      <span className="countdown-label">L&apos;édition festival, c&apos;est dans</span>
-      <div className="countdown-frame">
-        {UNITS.map((u, i) => (
-          <div key={u.label} className="countdown-unit-group">
-            <div className="countdown-unit">
-              <span className="countdown-value">{u.pad ? pad(u.value) : u.value}</span>
-              <span className="countdown-unit-label">{u.label}</span>
-            </div>
-            {i < UNITS.length - 1 && <span className="countdown-sep">:</span>}
-          </div>
-        ))}
-      </div>
+    <div className="countdown-row">
+      <Ring value={t.days} max={60} label="Jours" />
+      <Ring value={t.hours} max={24} label="Heures" />
+      <Ring value={t.minutes} max={60} label="Minutes" />
+      <Ring value={t.seconds} max={60} label="Secondes" />
     </div>
   );
 }
