@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   getCurrentStandardTier,
   SALONS,
@@ -34,17 +34,59 @@ const OFFERS = [
   })),
 ];
 
+const MAX_QTY_PER_OFFER = 10;
+
 export default function TicketBooking() {
-  const [selectedTier, setSelectedTier] = useState(null);
+  const [cart, setCart] = useState({}); // { [offerId]: qty }
   const [form, setForm] = useState({ full_name: "", email: "", phone: "" });
   const [status, setStatus] = useState("idle"); // idle | submitting | pending | confirming | done | error
-  const [orderId, setOrderId] = useState(null);
+  const [orderIds, setOrderIds] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const tier = OFFERS.find((t) => t.id === selectedTier);
+  const locked = status === "pending" || status === "confirming" || status === "done";
+
+  const cartItems = useMemo(
+    () =>
+      OFFERS.filter((o) => cart[o.id] > 0).map((o) => ({
+        ...o,
+        qty: cart[o.id],
+      })),
+    [cart]
+  );
+  const totalQty = cartItems.reduce((n, i) => n + i.qty, 0);
+  const totalAmount = cartItems.reduce((n, i) => n + i.qty * i.amount, 0);
+
+  function addToCart(id) {
+    if (locked) return;
+    setCart((c) => ({
+      ...c,
+      [id]: Math.min((c[id] || 0) + 1, MAX_QTY_PER_OFFER),
+    }));
+  }
+
+  function changeQty(id, delta) {
+    if (locked) return;
+    setCart((c) => {
+      const next = Math.max(0, Math.min((c[id] || 0) + delta, MAX_QTY_PER_OFFER));
+      const copy = { ...c };
+      if (next === 0) delete copy[id];
+      else copy[id] = next;
+      return copy;
+    });
+  }
+
+  function removeFromCart(id) {
+    if (locked) return;
+    setCart((c) => {
+      const copy = { ...c };
+      delete copy[id];
+      return copy;
+    });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (cartItems.length === 0) return;
     setStatus("submitting");
     setErrorMsg("");
     try {
@@ -53,12 +95,12 @@ export default function TicketBooking() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          tier_id: tier.id,
+          items: cartItems.map((i) => ({ tier_id: i.id, qty: i.qty })),
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur");
-      setOrderId(data.id);
+      setOrderIds(data.ids);
       setStatus("pending");
     } catch (err) {
       setErrorMsg("Une erreur est survenue. Réessaie.");
@@ -75,7 +117,7 @@ export default function TicketBooking() {
       const res = await fetch("/api/orders/confirm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: orderId }),
+        body: JSON.stringify({ ids: orderIds }),
       });
       if (!res.ok) throw new Error();
       setStatus("done");
@@ -88,72 +130,138 @@ export default function TicketBooking() {
   return (
     <>
       <div className="tickets-grid tickets-grid-offers">
-        {OFFERS.map((t) => (
-          <div
-            key={t.id}
-            className={`ticket-card${t.featured ? " featured" : ""}`}
-          >
-            {t.image && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={t.image} alt={t.label} className="ticket-card-img" />
-            )}
-            <div className="ticket-card-top">
-              <span className="ticket-label">{t.label}</span>
-              {t.badge && <span className="ticket-badge">{t.badge}</span>}
-            </div>
-            <span className="ticket-price">{formatFCFA(t.amount)}</span>
-            <div className="ticket-features">
-              {t.features.map((f) => (
-                <span key={f}>· {f}</span>
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedTier(t.id);
-                setStatus("idle");
-                setErrorMsg("");
-              }}
-              className={t.featured ? "btn-gold" : "btn-line"}
-              style={
-                t.featured
-                  ? { textAlign: "center", background: "#733B1A", color: "#FFFFFF" }
-                  : { textAlign: "center" }
-              }
+        {OFFERS.map((t) => {
+          const qty = cart[t.id] || 0;
+          return (
+            <div
+              key={t.id}
+              className={`ticket-card${t.featured ? " featured" : ""}`}
             >
-              Réserver
-            </button>
-          </div>
-        ))}
+              {t.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={t.image} alt={t.label} className="ticket-card-img" />
+              )}
+              <div className="ticket-card-top">
+                <span className="ticket-label">{t.label}</span>
+                {t.badge && <span className="ticket-badge">{t.badge}</span>}
+              </div>
+              <span className="ticket-price">{formatFCFA(t.amount)}</span>
+              <div className="ticket-features">
+                {t.features.map((f) => (
+                  <span key={f}>· {f}</span>
+                ))}
+              </div>
+
+              {qty === 0 ? (
+                <button
+                  type="button"
+                  onClick={() => addToCart(t.id)}
+                  disabled={locked}
+                  className={t.featured ? "btn-gold" : "btn-line"}
+                  style={
+                    t.featured
+                      ? { textAlign: "center", background: "#733B1A", color: "#FFFFFF" }
+                      : { textAlign: "center" }
+                  }
+                >
+                  Ajouter au panier
+                </button>
+              ) : (
+                <div className="cart-stepper cart-stepper-card">
+                  <button
+                    type="button"
+                    onClick={() => changeQty(t.id, -1)}
+                    disabled={locked}
+                    aria-label="Retirer une unité"
+                  >
+                    −
+                  </button>
+                  <span>{qty} au panier</span>
+                  <button
+                    type="button"
+                    onClick={() => changeQty(t.id, 1)}
+                    disabled={locked || qty >= MAX_QTY_PER_OFFER}
+                    aria-label="Ajouter une unité"
+                  >
+                    +
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
-      {tier && (
-        <div
-          style={{
-            marginTop: 32,
-            padding: 32,
-            border: "1px solid rgba(115,59,26,0.12)",
-            borderRadius: 18,
-            maxWidth: 480,
-          }}
-        >
+      {cartItems.length > 0 && (
+        <div className="cart-panel">
+          <div className="cart-panel-header">
+            <span className="eyebrow-label">
+              PANIER — {totalQty} billet{totalQty > 1 ? "s" : ""}
+            </span>
+          </div>
+
+          <div className="cart-lines">
+            {cartItems.map((i) => (
+              <div key={i.id} className="cart-line">
+                <div className="cart-line-info">
+                  <span className="cart-line-label">{i.label}</span>
+                  <span className="cart-line-unit">
+                    {formatFCFA(i.amount)} / unité
+                  </span>
+                </div>
+                <div className="cart-stepper">
+                  <button
+                    type="button"
+                    onClick={() => changeQty(i.id, -1)}
+                    disabled={locked}
+                    aria-label="Retirer une unité"
+                  >
+                    −
+                  </button>
+                  <span>{i.qty}</span>
+                  <button
+                    type="button"
+                    onClick={() => changeQty(i.id, 1)}
+                    disabled={locked || i.qty >= MAX_QTY_PER_OFFER}
+                    aria-label="Ajouter une unité"
+                  >
+                    +
+                  </button>
+                </div>
+                <span className="cart-line-total">
+                  {formatFCFA(i.qty * i.amount)}
+                </span>
+                {!locked && (
+                  <button
+                    type="button"
+                    onClick={() => removeFromCart(i.id)}
+                    className="cart-line-remove"
+                    aria-label="Supprimer cette ligne"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="cart-total-row">
+            <span>Total</span>
+            <span className="cart-total-amount">{formatFCFA(totalAmount)}</span>
+          </div>
+
           {status !== "done" ? (
             <form
               onSubmit={handleSubmit}
-              style={{ display: "flex", flexDirection: "column", gap: 14 }}
+              style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 20 }}
             >
-              <span style={{ fontWeight: 600, color: "var(--ink)" }}>
-                Réservation — {tier.label} ({formatFCFA(tier.amount)})
-              </span>
               <input
                 required
                 placeholder="Nom complet"
                 value={form.full_name}
-                onChange={(e) =>
-                  setForm({ ...form, full_name: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, full_name: e.target.value })}
                 style={inputStyle}
-                disabled={status === "pending" || status === "confirming"}
+                disabled={locked}
               />
               <input
                 required
@@ -162,7 +270,7 @@ export default function TicketBooking() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 style={inputStyle}
-                disabled={status === "pending" || status === "confirming"}
+                disabled={locked}
               />
               <input
                 required
@@ -170,12 +278,12 @@ export default function TicketBooking() {
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 style={inputStyle}
-                disabled={status === "pending" || status === "confirming"}
+                disabled={locked}
               />
 
               {status !== "pending" && status !== "confirming" && (
                 <button type="submit" className="btn-gold" disabled={status === "submitting"}>
-                  {status === "submitting" ? "Enregistrement…" : "Continuer"}
+                  {status === "submitting" ? "Enregistrement…" : "Commander"}
                 </button>
               )}
 
@@ -199,12 +307,14 @@ export default function TicketBooking() {
                     className="btn-line"
                     style={{ textAlign: "center" }}
                   >
-                    (Test) Simuler le paiement et recevoir le billet
+                    (Test) Simuler le paiement et recevoir {totalQty > 1 ? "les billets" : "le billet"}
                   </button>
                 </div>
               )}
 
-              {status === "confirming" && <span>Envoi du billet…</span>}
+              {status === "confirming" && (
+                <span>{totalQty > 1 ? "Envoi des billets…" : "Envoi du billet…"}</span>
+              )}
               {status === "error" && (
                 <span style={{ color: "#b42318", fontSize: 13.5 }}>
                   {errorMsg}
@@ -212,9 +322,9 @@ export default function TicketBooking() {
               )}
             </form>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 20 }}>
               <span style={{ fontWeight: 600, color: "var(--ink)" }}>
-                Billet envoyé 🎉
+                {totalQty > 1 ? "Billets envoyés 🎉" : "Billet envoyé 🎉"}
               </span>
               <span style={{ fontSize: 14, color: "var(--ink-muted)" }}>
                 Vérifie la boîte mail {form.email} (et les spams).
