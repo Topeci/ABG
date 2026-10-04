@@ -175,7 +175,7 @@ export default function EvenementPage() {
             </p>
             <div style={{ marginTop: 8 }}>
               <Link href="/billetterie" className="btn-gold">
-                Réserver ma place →
+                Réserver ma place
               </Link>
             </div>
           </div>

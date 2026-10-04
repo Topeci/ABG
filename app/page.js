@@ -43,7 +43,7 @@ export default function Home() {
           playsInline
         />
         <Link href="/edition-5" className="hero-teaser-badge hero-teaser-badge-flashy">
-          <span>Découvrez la nouvelle édition 5 →</span>
+          <span>Découvrez la nouvelle édition 5</span>
         </Link>
       </section>
 
@@ -93,7 +93,7 @@ export default function Home() {
                 className="pill-outline"
                 style={{ borderColor: "var(--accent-gold)", color: "var(--accent-gold)" }}
               >
-                Découvrir le concept →
+                Découvrir le concept
               </Link>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function Home() {
             <h2 style={{ margin: "6px 0 0" }}>Moment par moment</h2>
           </div>
           <Link href="/programme" className="pill-outline">
-            Voir le programme complet →
+            Voir le programme complet
           </Link>
         </div>
         <div className="steps-grid">
@@ -153,7 +153,7 @@ export default function Home() {
             <h2 style={{ margin: "6px 0 0" }}>Revis les éditions précédentes</h2>
           </div>
           <Link href="/galerie" className="pill-outline">
-            Voir toute la galerie →
+            Voir toute la galerie
           </Link>
         </div>
         <div className="editions-grid">
@@ -170,9 +170,6 @@ export default function Home() {
       {/* BILLETTERIE — zone marketing */}
       <section className="section">
         <div className="billet-promo">
-          <span className="billet-promo-notch billet-promo-notch-left" />
-          <span className="billet-promo-notch billet-promo-notch-right" />
-
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logo.png" alt="Indénié Brunch" className="billet-promo-logo" />
 
@@ -190,7 +187,7 @@ export default function Home() {
             </div>
 
             <Link href="/billetterie" className="billet-promo-cta">
-              Je réserve ma place →
+              Je réserve ma place
             </Link>
           </div>
 
@@ -227,7 +224,7 @@ export default function Home() {
             <h2 style={{ margin: "6px 0 0" }}>Les dernières nouvelles</h2>
           </div>
           <Link href="/actus" className="pill-outline">
-            Voir toutes les actus →
+            Voir toutes les actus
           </Link>
         </div>
         <div className="news-grid-3" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>

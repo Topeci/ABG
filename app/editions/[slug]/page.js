@@ -32,7 +32,7 @@ export default function EditionPage({ params }) {
           <h2>{edition.title}</h2>
         </div>
         <Link href="/galerie" className="pill-outline" style={{ display: "inline-block", marginBottom: 32 }}>
-          ← Retour à la galerie
+          Retour à la galerie
         </Link>
         <PhotoLightbox photos={edition.photos} title={edition.title} />
       </section>

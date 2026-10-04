@@ -57,7 +57,7 @@ export default function ActusPage() {
                 <h3>{a.title}</h3>
                 <p>{a.excerpt}</p>
                 <span className="pill-outline">
-                  {a.type === "video" ? "Voir la vidéo" : "Lire l'article"} →
+                  {a.type === "video" ? "Voir la vidéo" : "Lire l'article"}
                 </span>
               </a>
             ))}
