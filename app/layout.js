@@ -1,8 +1,8 @@
-import { Work_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "../lib/cart-context";
 
-const workSans = Work_Sans({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={workSans.variable}>
+    <html lang="fr" className={poppins.variable}>
       <body>
         <CartProvider>{children}</CartProvider>
       </body>
