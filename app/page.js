@@ -3,6 +3,8 @@ import NavBar from "./components/NavBar";
 import SiteFooter from "./components/SiteFooter";
 import { getCurrentStandardTier, STANDARD_INCLUDES } from "../lib/pricing";
 import { ACTUS } from "../lib/actus";
+import { EDITIONS } from "../lib/editions";
+import { STEPS } from "../lib/programme";
 
 function formatFCFA(n) {
   return n.toLocaleString("fr-FR") + " FCFA";
@@ -11,6 +13,8 @@ function formatFCFA(n) {
 export default function Home() {
   const currentStandard = getCurrentStandardTier();
   const latestActus = ACTUS.slice(0, 2);
+  const programmePreview = STEPS.slice(0, 3);
+  const galeriePreview = EDITIONS.slice(0, 4);
   return (
     <main>
       <NavBar />
@@ -81,6 +85,69 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/gallery/evt-09-trio-hommes.jpg" alt="Ambiance Indénié Brunch" />
           </div>
+        </div>
+      </section>
+
+      {/* PROGRAMME — aperçu */}
+      <section className="section" style={{ background: "#FBF8F2" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
+            gap: 16,
+            marginBottom: 32,
+          }}
+        >
+          <div>
+            <span className="eyebrow-label">PROGRAMME</span>
+            <h2 style={{ margin: "6px 0 0" }}>Moment par moment</h2>
+          </div>
+          <Link href="/programme" className="pill-outline">
+            Voir le programme complet →
+          </Link>
+        </div>
+        <div className="steps-grid">
+          {programmePreview.map((s) => (
+            <div key={s.title} className="step-item">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={s.img} alt={s.title} className="step-circle" />
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* GALERIE — aperçu */}
+      <section className="section">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
+            gap: 16,
+            marginBottom: 32,
+          }}
+        >
+          <div>
+            <span className="eyebrow-label">GALERIE</span>
+            <h2 style={{ margin: "6px 0 0" }}>Revis les éditions précédentes</h2>
+          </div>
+          <Link href="/galerie" className="pill-outline">
+            Voir toute la galerie →
+          </Link>
+        </div>
+        <div className="editions-grid">
+          {galeriePreview.map((e) => (
+            <Link key={e.slug} href={`/editions/${e.slug}`} className="edition-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={e.cover} alt={e.title} />
+              <span>{e.title}</span>
+            </Link>
+          ))}
         </div>
       </section>
 
