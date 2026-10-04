@@ -176,7 +176,7 @@ export default function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logo.png" alt="Indénié Brunch" className="billet-promo-logo" />
 
-          <span className="billet-promo-eyebrow">⚡ Places limitées — Édition Festival</span>
+          <span className="billet-promo-eyebrow">Places limitées — Édition Festival</span>
           <h2 className="billet-promo-title">Réserve ta place</h2>
           <p className="billet-promo-sub">
             {STANDARD_INCLUDES}. Accès général, ambiance garantie — ne laisse
