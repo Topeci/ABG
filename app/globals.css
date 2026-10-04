@@ -759,6 +759,221 @@ img {
     justify-self: end;
   }
 }
+/* Compte à rebours */
+.countdown-wrap {
+  background: #14110d;
+  padding: 44px 24px 52px;
+  text-align: center;
+}
+.countdown-label {
+  display: block;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 26px;
+}
+.countdown-frame {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 24px 36px;
+  border: 1px solid rgba(191, 129, 75, 0.45);
+  outline: 1px solid var(--accent-gold);
+  outline-offset: 7px;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at center, rgba(191, 129, 75, 0.12), transparent 70%);
+}
+.countdown-unit-group {
+  display: flex;
+  align-items: flex-start;
+}
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 62px;
+}
+.countdown-value {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 700;
+  color: #faf6ee;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-unit-label {
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #bf814b;
+}
+.countdown-sep {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--accent-gold);
+  opacity: 0.45;
+  margin: 2px 6px 0;
+}
+@media (max-width: 640px) {
+  .countdown-frame {
+    padding: 18px 16px;
+    outline-offset: 5px;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 14px;
+  }
+  .countdown-unit {
+    min-width: 50px;
+  }
+  .countdown-value {
+    font-size: 28px;
+  }
+  .countdown-sep {
+    font-size: 22px;
+    margin: 0 3px;
+  }
+}
+
+/* Billetterie — zone marketing */
+.billet-promo {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 48px;
+  text-align: center;
+  background: radial-gradient(circle at 20% 15%, #8a4a22, #5a2d12 65%);
+  border-radius: 24px;
+  border: 2px dashed var(--accent-gold);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(115, 59, 26, 0.3);
+}
+.billet-promo-notch {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f2f2f2;
+}
+.billet-promo-notch-left {
+  left: -18px;
+}
+.billet-promo-notch-right {
+  right: -18px;
+}
+.billet-promo-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #14110d;
+  background: var(--accent-gold);
+  padding: 7px 18px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.billet-promo-title {
+  font-family: var(--font-display);
+  font-size: 46px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #faf6ee;
+  letter-spacing: 0.5px;
+  margin: 0 0 16px;
+}
+.billet-promo-sub {
+  max-width: 460px;
+  margin: 0 auto 28px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e9d9c4;
+}
+.billet-promo-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: rgba(250, 246, 238, 0.08);
+  border: 1px solid rgba(250, 246, 238, 0.25);
+}
+.billet-promo-price-tag {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #e9d9c4;
+}
+.billet-promo-price-amount {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+.billet-promo-cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #14110d;
+  background: var(--accent-gold);
+  padding: 20px 48px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 rgba(191, 129, 75, 0.55);
+  animation: billetPulse 2.4s ease-in-out infinite;
+}
+.billet-promo-cta:hover {
+  background: #d79a60;
+}
+@keyframes billetPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(191, 129, 75, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(191, 129, 75, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(191, 129, 75, 0);
+  }
+}
+.billet-promo-urgency {
+  margin: 24px 0 0;
+  font-size: 13px;
+  color: #e9d9c4;
+}
+.billet-promo-urgency strong {
+  color: var(--accent-gold);
+}
+.billet-promo-perks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(250, 246, 238, 0.15);
+  font-size: 12.5px;
+  color: #e9d9c4;
+}
+@media (max-width: 640px) {
+  .billet-promo {
+    padding: 44px 24px;
+  }
+  .billet-promo-title {
+    font-size: 32px;
+  }
+  .billet-promo-cta {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+}
+
 .payment-note {
   display: inline-flex;
   align-items: center;
@@ -1292,8 +1507,9 @@ img {
 }
 .news-card img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: center top;
   border-radius: 8px;
   margin-bottom: 16px;
 }

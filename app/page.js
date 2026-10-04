@@ -1,7 +1,8 @@
 import Link from "next/link";
 import NavBar from "./components/NavBar";
 import SiteFooter from "./components/SiteFooter";
-import { getCurrentStandardTier, STANDARD_INCLUDES } from "../lib/pricing";
+import Countdown from "./components/Countdown";
+import { getCurrentStandardTier, STANDARD_INCLUDES, STANDARD_TIERS } from "../lib/pricing";
 import { ACTUS } from "../lib/actus";
 import { EDITIONS } from "../lib/editions";
 import { STEPS } from "../lib/programme";
@@ -10,8 +11,19 @@ function formatFCFA(n) {
   return n.toLocaleString("fr-FR") + " FCFA";
 }
 
+function formatDateFR(iso) {
+  if (!iso) return null;
+  return new Date(iso).toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  });
+}
+
 export default function Home() {
   const currentStandard = getCurrentStandardTier();
+  const currentTierIndex = STANDARD_TIERS.findIndex((t) => t.id === currentStandard.id);
+  const nextTier = STANDARD_TIERS[currentTierIndex + 1];
   const latestActus = ACTUS.slice(0, 2);
   const programmePreview = STEPS.slice(0, 3);
   const galeriePreview = EDITIONS.slice(0, 4);
@@ -56,6 +68,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Countdown />
 
       {/* ÉVÉNEMENT — aperçu */}
       <section className="section" style={{ paddingTop: 72 }}>
@@ -151,20 +165,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BILLETTERIE — aperçu */}
-      <section className="section" style={{ background: "#FBF8F2" }}>
-        <div className="section-heading" style={{ textAlign: "center" }}>
-          <span className="eyebrow-label">BILLETTERIE</span>
-          <h2>Réserve ta place</h2>
-          <p style={{ marginTop: 10, color: "var(--ink-muted)" }}>
-            Billet Standard à partir de{" "}
-            <strong style={{ color: "var(--ink)" }}>{formatFCFA(currentStandard.amount)}</strong>{" "}
-            — {STANDARD_INCLUDES.toLowerCase()}.
+      {/* BILLETTERIE — zone marketing */}
+      <section className="section">
+        <div className="billet-promo">
+          <span className="billet-promo-notch billet-promo-notch-left" />
+          <span className="billet-promo-notch billet-promo-notch-right" />
+
+          <span className="billet-promo-eyebrow">⚡ Places limitées — Édition Festival</span>
+          <h2 className="billet-promo-title">Réserve ta place</h2>
+          <p className="billet-promo-sub">
+            {STANDARD_INCLUDES}. Accès général, ambiance garantie — ne laisse
+            pas tes amis y aller sans toi.
           </p>
-          <div style={{ marginTop: 20 }}>
-            <Link href="/billetterie" className="btn-gold">
-              Réserver ma place →
-            </Link>
+
+          <div className="billet-promo-price">
+            <span className="billet-promo-price-tag">{currentStandard.shortLabel}</span>
+            <span className="billet-promo-price-amount">{formatFCFA(currentStandard.amount)}</span>
+          </div>
+
+          <Link href="/billetterie" className="billet-promo-cta">
+            Je réserve ma place →
+          </Link>
+
+          {nextTier && (
+            <p className="billet-promo-urgency">
+              Le tarif passe à <strong>{formatFCFA(nextTier.amount)}</strong> dès
+              le {formatDateFR(currentStandard.until)} — réserve avant pour payer
+              moins cher.
+            </p>
+          )}
+
+          <div className="billet-promo-perks">
+            <span>✓ Paiement Wave &amp; Orange Money</span>
+            <span>✓ Billet avec QR code envoyé par email</span>
+            <span>✓ Salons VIP disponibles</span>
           </div>
         </div>
       </section>
