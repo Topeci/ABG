@@ -143,33 +143,15 @@ export default function Edition5Page() {
         <div className="section-heading">
           <span className="eyebrow-label">NOUVELLE ÉDITION</span>
           <h2>Édition 5 — Festival</h2>
-          <p style={{ marginTop: 12, color: "var(--ink-muted)", fontSize: 16, lineHeight: 1.75, maxWidth: 680 }}>
-            Cette fois, l&apos;Indénié Brunch voit plus grand : une édition
-            festival, avec encore plus de surprises, de musique et de
-            moments à partager. Toujours le même dress code — tout blanc —
-            et toujours le même esprit : une après-midi hors du temps entre
-            la jeunesse d&apos;Abengourou.
-          </p>
         </div>
 
-        <div className="about" style={{ marginTop: 40 }}>
-          <div className="about-text">
-            <h3 style={{ fontSize: 24, color: "var(--ink)", marginBottom: 12 }}>
-              Visuels de communication
-            </h3>
-            <p style={{ fontSize: 15, color: "var(--ink-muted)", lineHeight: 1.7 }}>
-              Les premières affiches de l&apos;édition festival sont déjà
-              dehors — encore plus d&apos;infos et de surprises à venir.
-            </p>
-          </div>
-          <div className="about-img">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/gallery/evt-17-flyer-edition-festival.jpg"
-              alt="Affiche Indénié Brunch — Édition festival"
-            />
-          </div>
-        </div>
+        <figure className="e5-flyer">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/gallery/evt-17-flyer-edition-festival.jpg"
+            alt="Affiche Indénié Brunch — Édition festival"
+          />
+        </figure>
       </section>
 
 

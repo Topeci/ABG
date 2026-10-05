@@ -2090,3 +2090,15 @@ img {
   .team-head { margin-bottom: 30px; }
   .team-photo img { border-radius: 16px; }
 }
+
+.e5-flyer {
+  max-width: 560px;
+  margin: 40px auto 0;
+}
+.e5-flyer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  box-shadow: 0 30px 60px -28px rgba(13, 58, 31, 0.55);
+}
