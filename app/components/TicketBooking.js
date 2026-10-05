@@ -31,7 +31,7 @@ export default function TicketBooking() {
               )}
               <div className="ticket-card-top">
                 <span className="ticket-label">{t.label}</span>
-                {t.badge && <span className="ticket-badge">{t.badge}</span>}
+                {t.badge && <span className={`ticket-badge${t.badgeFlash ? " ticket-badge-flash" : ""}`}>{t.badge}</span>}
               </div>
               <span className="ticket-price">{formatFCFA(t.amount)}</span>
               <div className="ticket-features">

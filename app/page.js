@@ -178,8 +178,8 @@ export default function Home() {
           <span className="billet-promo-eyebrow">Places limitées</span>
           <h2 className="billet-promo-title">Réserve ta place</h2>
           <p className="billet-promo-sub">
-            {STANDARD_INCLUDES}. Accès général, ambiance garantie — ne laisse
-            pas tes amis y aller sans toi.
+            {STANDARD_INCLUDES}. Accès général, ambiance garantie.{" "}
+            <em>“Ne laisse pas tes amis y aller sans toi.”</em>
           </p>
 
           <div className="billet-promo-pills">

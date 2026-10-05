@@ -2136,3 +2136,19 @@ img {
 }
 .back-to-top:hover { background: #0d3a1f; }
 .back-to-top svg { width: 22px; height: 22px; }
+
+/* Badge prévente : rouge clignotant */
+.ticket-badge.ticket-badge-flash,
+.edition5-page .ticket-badge.ticket-badge-flash {
+  color: #fff;
+  background: #e11d2e;
+  border-color: #e11d2e;
+  animation: badge-flash 1s ease-in-out infinite;
+}
+@keyframes badge-flash {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(225, 29, 46, 0.7); }
+  50% { opacity: 0.35; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticket-badge.ticket-badge-flash { animation: none; }
+}
