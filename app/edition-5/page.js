@@ -14,21 +14,24 @@ const CHAPTERS = [
   {
     n: "01",
     eyebrow: "L'ÉLÉGANCE",
-    title: "Le blanc, rien que le blanc.",
+    title: "Le blanc, sinon rien",
     text: [
-      "Une seule règle, et elle change tout : le blanc. Lin fluide, chemise ouverte, robe légère — le blanc ne cache rien, il révèle l'allure, le sourire, la présence.",
-      "Ici, chaque invité devient sa propre mise en scène. Viens avec ton style, repars avec tes plus belles photos.",
+      "Le dress code est simple.\n\nBlanc.",
+      "Pas blanc cassé.\nPas beige.\nPas « à distance ça ressemble au blanc ».\n\nDu vrai blanc.",
+      "Parce que quand tout le monde joue le jeu, le spectacle est juste magnifique.",
+      "Et entre nous, c'est aussi l'occasion de sortir cette tenue que tu gardes depuis des mois dans l'armoire en attendant « une bonne occasion ».\n\nLa bonne occasion est arrivée.",
     ],
     img: "couple",
     alt: "Un couple tout en blanc, Indénié Brunch Édition festival",
   },
   {
     n: "02",
-    eyebrow: "LES RETROUVAILLES",
-    title: "On vient pour la fête, on reste pour eux.",
+    eyebrow: "LA BANDE",
+    title: "Viens avec ta bande",
     text: [
-      "Les accolades qui durent, les fous rires qui partent tout seuls, la photo qu'on gardera longtemps. L'Indénié Brunch, c'est d'abord le plaisir d'être ensemble, entouré de ceux qui comptent.",
-      "Prends ta bande, ramène les cousins, invite ceux qui ne sont jamais venus : le plus beau décor, c'est eux.",
+      "Le plus beau dans l'Indénié Brunch, ce n'est pas la décoration.\nCe ne sont pas les lumières.\nCe ne sont même pas les artistes.\n\nC'est vous.",
+      "Les amis qui se retrouvent.\nLes cousins qui débarquent ensemble.\nLes photos de groupe où quelqu'un ferme toujours les yeux.\nLes fous rires qui commencent sans raison.",
+      "Plus on est nombreux, plus c'est doux.",
     ],
     img: "trio",
     alt: "Trois amis souriants lors de l'Indénié Brunch",
@@ -37,10 +40,12 @@ const CHAPTERS = [
   {
     n: "03",
     eyebrow: "LA COMMUNAUTÉ",
-    title: "Une jeunesse qui rayonne.",
+    title: "La jeunesse de l'Indénié au rendez-vous",
     text: [
-      "Des amis de toujours et des rencontres de l'après-midi : la jeunesse de l'Indénié se retrouve, s'habille de blanc et prend toute la lumière.",
-      "Chaque édition grandit grâce à ceux qui la vivent. Cette année, on change d'échelle — place au festival.",
+      "À chaque édition, la famille grandit.",
+      "Des étudiants, des entrepreneurs, des artistes, des travailleurs, des jeunes venus de partout. Pendant une journée, tout le monde se retrouve au même endroit.",
+      "Cette année, on voit plus grand.\nPlus d'espace.\nPlus d'animations.\nPlus de surprises.\nEt surtout plus de bons souvenirs.",
+      "Ya foye garanti.",
     ],
     img: "groupe",
     alt: "Groupe d'invités en tenue blanche, Indénié Brunch",
@@ -51,10 +56,11 @@ const CHAPTERS_2 = [
   {
     n: "05",
     eyebrow: "LE STYLE",
-    title: "Le détail qui fait la signature.",
+    title: "Sors ton plus beau style",
     text: [
-      "Une coiffure audacieuse, un bijou qui capte la lumière, un sourire qui fait tout : le style est un langage, et l'Indénié Brunch lui offre le plus bel écrin.",
-      "Ose la couleur, la coupe, l'accessoire. Le blanc est ta toile, à toi de signer.",
+      "L'Indénié Brunch, c'est aussi le podium d'Abengourou.",
+      "Les plus belles robes.\nLes plus belles chemises.\nLes lunettes.\nLes montres.\nLes chaussures toutes neuves.",
+      "On sait déjà que certains préparent leur tenue depuis plusieurs semaines.\n\nEt ils ont raison.",
     ],
     img: "solo",
     alt: "Invitée à la chevelure cuivrée, Indénié Brunch Édition festival",
@@ -62,22 +68,25 @@ const CHAPTERS_2 = [
   },
   {
     n: "06",
-    eyebrow: "LA COMPLICITÉ",
-    title: "Les meilleurs moments ne se posent pas.",
+    eyebrow: "LES SOUVENIRS",
+    title: "Les souvenirs se fabriquent ici",
     text: [
-      "Entre deux musiques, deux verres et deux éclats de rire, les plus belles images arrivent sans prévenir. Une lumière dorée, une amie, un regard — et l'instant est déjà un souvenir.",
-      "On ne vient pas seulement voir l'Indénié Brunch : on y laisse une trace.",
+      "Une photo entre amis.\nUn coucher de soleil.\nUne chanson qui passe au bon moment.\nUn éclat de rire.",
+      "Ce sont ces petits instants qui restent.",
+      "Des années plus tard, tu regarderas les photos et tu diras :\n« J'y étais. »",
     ],
     img: "duo",
     alt: "Deux amies complices en robe blanche, Indénié Brunch",
   },
   {
     n: "07",
-    eyebrow: "L'ART DE RECEVOIR",
-    title: "Quand la fête se vit en salon.",
+    eyebrow: "LES SALONS",
+    title: "Pour ceux qui aiment les choses en grand",
     text: [
-      "Une table dressée de blanc, des bouteilles qui s'ouvrent à l'heure juste, un espace rien que pour vous et vos invités : l'expérience premium de l'édition.",
-      "Les salons Niablé, Zaranou et San Kadiokro sont pensés pour ceux qui aiment célébrer en grand. Les places sont limitées — réservez avant les autres.",
+      "Tu veux vivre l'événement dans les meilleures conditions ?\nLes espaces salons sont là pour toi.",
+      "Plus de confort.\nPlus d'espace.\nPlus de tranquillité.",
+      "Parfait pour venir entre amis, en famille ou avec tes invités.",
+      "Mais attention.\nLes places partent vite.\nTrès vite.",
     ],
     img: "table",
     alt: "Table dressée en blanc avec seau à champagne, Indénié Brunch",
@@ -166,35 +175,29 @@ export default function Edition5Page() {
 
       <section className="section e5-journal">
         <header className="e5-manifesto">
-          <span className="eyebrow-label">LE JOURNAL DE L&apos;ÉDITION</span>
+          <span className="eyebrow-label">MANIFESTE</span>
           <h2>
-            Une après-midi tout de blanc vêtue,
+            Tout le monde en blanc,
             <br />
-            <em>une signature verte.</em>
+            <em>personne n&apos;a le droit de se tâcher</em>
           </h2>
           <p>
-            Il y a des fêtes qu&apos;on oublie. Et il y a l&apos;Indénié Brunch.
-            Pour cette édition festival, Abengourou s&apos;habille de blanc,
-            s&apos;offre des palmes, des lumières dorées et une promesse :
-            une journée d&apos;élégance pensée comme une invitation — pas comme
-            un simple événement.
+            {"Il y a les événements où tu viens, tu manges et tu rentres.\nEt puis il y a l'Indénié Brunch."}
           </p>
+          <p>
+            {"Le 19 décembre, Abengourou va encore se mettre sur son 31. Du blanc partout, de la bonne musique, des retrouvailles, des selfies à n'en plus finir et une ambiance qui va faire parler pendant des semaines."}
+          </p>
+          <p>{"Même ton ami qui dit toujours « moi je ne sors plus » sera là."}</p>
+          <p>
+            <strong>Cette année, on passe en mode Festival.</strong>
+          </p>
+          <p>{"Prépare seulement ta tenue.\nLe reste, on s'en occupe."}</p>
           <span className="e5-ornament" aria-hidden="true" />
         </header>
 
         {CHAPTERS.map((c) => (
           <Chapter key={c.n} c={c} />
         ))}
-
-        <blockquote className="e5-quote">
-          <p>
-            Le blanc pour la lumière.
-            <br />
-            Le vert pour les racines.
-            <br />
-            Abengourou pour décor.
-          </p>
-        </blockquote>
 
         <article className="e5-chapter e5-program">
           <figure className="e5-chapter-media">
@@ -208,24 +211,29 @@ export default function Edition5Page() {
           <div className="e5-chapter-text">
             <span className="e5-chapter-num">04</span>
             <span className="eyebrow-label">AU PROGRAMME</span>
-            <h3>Trois promesses, et bien d&apos;autres surprises.</h3>
+            <h3>Ce qui t&apos;attend</h3>
             <ul className="e5-pillars">
               <li>
-                <strong>Food &amp; Chill</strong>
-                <span>Une table généreuse, une ambiance détendue, le temps de savourer.</span>
+                <strong>Manger</strong>
+                <span>Parce qu&apos;une bonne fête commence toujours par un bon plat.</span>
               </li>
               <li>
-                <strong>Ambiance DJ</strong>
-                <span>Des sets qui montent en puissance, du brunch jusqu&apos;à la nuit.</span>
+                <strong>Danser</strong>
+                <span>Avec des DJ prêts à te faire oublier que tu avais prévu de rentrer tôt.</span>
               </li>
               <li>
-                <strong>Orchestre live</strong>
-                <span>Le frisson du direct, pour un festival qui se vit en musique.</span>
+                <strong>Chanter</strong>
+                <span>Avec des prestations live qui vont mettre l&apos;ambiance comme il faut.</span>
+              </li>
+              <li>
+                <strong>Profiter</strong>
+                <span>Prendre des photos, rencontrer du monde et vivre simplement le moment.</span>
               </li>
             </ul>
             <p className="e5-teaser">
-              Et le reste ? Nous le gardons secret. Une seule chose à savoir :
-              ce sera le <strong>19 décembre</strong>, à Abengourou, tout en blanc.
+              Pour le reste…
+              <br />
+              <strong>On garde quelques surprises.</strong>
             </p>
           </div>
         </article>
@@ -234,9 +242,22 @@ export default function Edition5Page() {
           <Chapter key={c.n} c={c} />
         ))}
 
+        <blockquote className="e5-quote">
+          <p>
+            Le blanc pour l&apos;élégance.
+            <br />
+            Le vert pour nos racines.
+            <br />
+            Abengourou pour la fête.
+          </p>
+        </blockquote>
+
         <div className="e5-final">
-          <h3>Ta place t&apos;attend.</h3>
-          <p>Le blanc, la musique, la lumière — il ne manque plus que toi.</p>
+          <h3>Ta place t&apos;attend</h3>
+          <p>
+            {"Le 19 décembre.\n\nLa musique sera là.\nL'ambiance sera là.\nLes photos seront là.\nTes amis seront là.\n\nLa vraie question est simple :"}
+          </p>
+          <p className="e5-final-question">Est-ce que toi aussi tu seras là ? 🔥🤍</p>
           <a className="e5-cta" href="#billetterie">
             Réserver ma place
           </a>
