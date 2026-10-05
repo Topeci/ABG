@@ -186,6 +186,36 @@ export default function EvenementPage() {
         </div>
       </section>
 
+      {/* L'ÉQUIPE */}
+      <section className="section team-section">
+        <div className="team-head">
+          <span className="eyebrow-label">L&apos;ÉQUIPE</span>
+          <h2>C&apos;est grâce à eux que ça existe</h2>
+          <p>
+            Derrière chaque tenue blanche, chaque sourire et chaque photo de
+            groupe, il y a une équipe qui court partout, installe, accueille,
+            règle les petits soucis… et trouve encore le temps de poser pour
+            la photo.
+          </p>
+        </div>
+        <figure className="team-photo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/edition-5/equipe.jpg"
+            alt="L'équipe de l'Indénié Brunch, tout en blanc, badges staff au cou"
+            loading="lazy"
+          />
+        </figure>
+        <p className="team-thanks">
+          Un grand merci à tous ceux qui travaillent dans l&apos;ombre (et
+          parfois dans le stress) pour que tu t&apos;enjailles le jour J. Le
+          19 décembre, quand tu croises quelqu&apos;un avec un badge
+          « STAFF », un sourire et un « merci » suffisent. Un bon plat, on ne
+          refuse pas non plus.
+          <strong>Respect à l&apos;équipe Indénié Brunch ! 🤍</strong>
+        </p>
+      </section>
+
       <SiteFooter />
     </main>
   );
