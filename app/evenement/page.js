@@ -208,10 +208,9 @@ export default function EvenementPage() {
         </figure>
         <p className="team-thanks">
           Un grand merci à tous ceux qui travaillent dans l&apos;ombre (et
-          parfois dans le stress) pour que tu t&apos;enjailles le jour J. Le
-          19 décembre, quand tu croises quelqu&apos;un avec un badge
-          « STAFF », un sourire et un « merci » suffisent. Un bon plat, on ne
-          refuse pas non plus.
+          parfois dans le stress) pour que tu t&apos;enjailles à chaque
+          édition. Lors de nos événements, quand tu croises quelqu&apos;un
+          avec un badge « STAFF », un sourire et un « merci » suffisent.
           <strong>Respect à l&apos;équipe Indénié Brunch ! 🤍</strong>
         </p>
       </section>
