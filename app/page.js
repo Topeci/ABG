@@ -37,7 +37,7 @@ export default function Home() {
       <section className="hero-full">
         <video
           className="hero-video"
-          src="/videos/hero-teaser.mp4"
+          src="/videos/hero-teaser-v2.mp4"
           poster="/images/hero-foule.jpg"
           autoPlay
           muted
