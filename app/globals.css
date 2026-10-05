@@ -2152,3 +2152,38 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .ticket-badge.ticket-badge-flash { animation: none; }
 }
+
+/* Écran d'attente */
+.splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.splash-hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.splash-logo-wrap { position: relative; width: min(46vw, 200px); }
+.splash-logo {
+  width: 100%; height: auto; display: block;
+  animation: splash-shine 1.8s ease-in-out infinite;
+}
+@keyframes splash-shine {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 0 rgba(191,129,75,0)); transform: scale(1); }
+  50% { filter: brightness(1.15) drop-shadow(0 0 18px rgba(191,129,75,0.75)); transform: scale(1.04); }
+}
+.splash-star {
+  position: absolute; width: 14px; height: 14px; opacity: 0;
+  background: radial-gradient(circle, #fff 0 18%, #bf814b 19% 30%, transparent 32%);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  background-color: #bf814b;
+  animation: splash-twinkle 1.8s ease-in-out infinite;
+}
+.splash-star.s1 { top: 8%; left: 12%; animation-delay: 0s; }
+.splash-star.s2 { top: 20%; right: 6%; animation-delay: 0.45s; width: 18px; height: 18px; }
+.splash-star.s3 { bottom: 14%; left: 4%; animation-delay: 0.9s; }
+.splash-star.s4 { bottom: 6%; right: 16%; animation-delay: 1.35s; width: 10px; height: 10px; }
+@keyframes splash-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0); }
+  50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
+}
+.billet-promo-quote { display: block; margin-top: 14px; font-style: italic; }
+@media (prefers-reduced-motion: reduce) { .splash-logo, .splash-star { animation: none; } }

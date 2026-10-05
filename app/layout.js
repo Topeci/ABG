@@ -1,5 +1,6 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Splash from "./components/Splash";
 import { CartProvider } from "../lib/cart-context";
 
 const poppins = Poppins({
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={poppins.variable}>
       <body>
+        <Splash />
         <CartProvider>{children}</CartProvider>
       </body>
     </html>
