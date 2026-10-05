@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const EVENT_DATE = "2026-12-19T18:00:00Z"; // Côte d'Ivoire = UTC+0
+const EVENT_DATE = "2026-12-19T16:00:00Z"; // Côte d'Ivoire = UTC+0
 
 function getTimeLeft() {
   const diff = new Date(EVENT_DATE).getTime() - Date.now();

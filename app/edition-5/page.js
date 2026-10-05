@@ -251,7 +251,7 @@ export default function Edition5Page() {
           </div>
           <div className="practical-item">
             <span className="label">Heure</span>
-            <span className="value">Dès 18h</span>
+            <span className="value">Dès 16h</span>
           </div>
           <div className="practical-item">
             <span className="label">Lieu</span>

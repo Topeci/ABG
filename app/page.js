@@ -58,7 +58,7 @@ export default function Home() {
           </div>
           <div className="practical-item">
             <span className="label" style={{ color: "#BF814B" }}>Heure</span>
-            <span className="value" style={{ color: "#FAF6EE" }}>Dès 18h</span>
+            <span className="value" style={{ color: "#FAF6EE" }}>Dès 16h</span>
           </div>
           <div className="practical-item">
             <span className="label" style={{ color: "#BF814B" }}>Lieu</span>
