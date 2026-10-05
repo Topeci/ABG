@@ -1784,77 +1784,248 @@ img {
   }
 }
 
-/* ---------- Édition 5 — festival background (green + white, bokeh/sparkle) ---------- */
+/* ---------- Édition 5 — fond blanc, touches vertes, palmes + halos flous ---------- */
 .edition5-page {
   position: relative;
   z-index: 0;
   overflow: hidden;
-  background-color: #0b2318;
-  background-image:
-    radial-gradient(circle at 15% 12%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 9%),
-    radial-gradient(circle at 82% 22%, rgba(235, 255, 240, 0.14) 0%, rgba(235, 255, 240, 0) 11%),
-    radial-gradient(circle at 70% 68%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 10%),
-    radial-gradient(circle at 25% 80%, rgba(235, 255, 240, 0.1) 0%, rgba(235, 255, 240, 0) 12%),
-    radial-gradient(ellipse at 50% 0%, rgba(143, 224, 168, 0.18) 0%, rgba(143, 224, 168, 0) 55%),
-    linear-gradient(160deg, #0d2b1c 0%, #123a26 35%, #0b2318 70%, #081a12 100%);
+  background: #ffffff;
 }
-
-.edition5-page::before {
-  content: "";
+.edition5-page .section { background: transparent; }
+.e5-deco {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle, rgba(143, 224, 168, 0.85) 0%, rgba(143, 224, 168, 0) 100%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle, rgba(143, 224, 168, 0.8) 0%, rgba(143, 224, 168, 0) 100%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle, rgba(143, 224, 168, 0.75) 0%, rgba(143, 224, 168, 0) 100%);
-  background-repeat: no-repeat;
-  background-size:
-    3px 3px, 2px 2px, 4px 4px, 2px 2px, 3px 3px, 2px 2px, 3px 3px, 4px 4px;
-  background-position:
-    10% 8%, 22% 35%, 38% 14%, 55% 60%, 68% 30%, 78% 75%, 88% 18%, 92% 55%;
-  animation: edition5Sparkle 4s ease-in-out infinite;
+  overflow: hidden;
+}
+.e5-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+.e5-bokeh {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #ffffff 48%, rgba(253, 240, 214, 0.85) 68%, rgba(253, 240, 214, 0) 100%);
+  filter: blur(1.5px);
+  animation: e5Pulse 5s ease-in-out infinite;
+}
+@keyframes e5Pulse {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+.e5-frond {
+  position: absolute;
+  display: block;
+  height: auto;
+}
+.e5-sparkle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, rgba(120, 210, 150, 0.9) 45%, rgba(120, 210, 150, 0) 72%);
+  animation: e5Twinkle 4s ease-in-out infinite;
+}
+@keyframes e5Twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.7); }
+  50% { opacity: 1; transform: scale(1.25); }
 }
 
-@keyframes edition5Sparkle {
-  0%,
-  100% {
-    opacity: 0.35;
+/* Édition 5 — bandeau et cartes billets en vert */
+.edition5-page .section.e5-band { background: #0d3a1f; }
+.edition5-page .e5-band .practical-item .label { color: rgba(255, 255, 255, 0.72); }
+.edition5-page .e5-band .practical-item .value { color: #ffffff; }
+.edition5-page .e5-band .countdown-eyebrow { color: rgba(255, 255, 255, 0.72); }
+.edition5-page .e5-band .countdown-divider { border-top-color: rgba(255, 255, 255, 0.2); }
+.edition5-page .e5-band .countdown-ring-arc { stroke: #ffffff; }
+.edition5-page .e5-band .countdown-ring-track { stroke: rgba(255, 255, 255, 0.2); }
+.edition5-page .e5-band .countdown-ring-value { color: #ffffff; }
+.edition5-page .e5-band .countdown-ring-label { color: rgba(255, 255, 255, 0.78); }
+
+.edition5-page .ticket-card { border-color: rgba(13, 58, 31, 0.22); }
+.edition5-page .ticket-label,
+.edition5-page .ticket-price { color: #14582d; }
+.edition5-page .ticket-features { color: #1b5a33; }
+.edition5-page .ticket-badge { color: #14582d; border-color: #14582d; }
+.edition5-page .btn-line { color: #0d3a1f; border-color: #0d3a1f; }
+.edition5-page .cart-stepper,
+.edition5-page .cart-stepper button { color: #0d3a1f; }
+.edition5-page .cart-stepper button { border-color: #0d3a1f; }
+
+.edition5-page .ticket-card.featured { background: #14582d; }
+.edition5-page .ticket-card.featured .ticket-label,
+.edition5-page .ticket-card.featured .ticket-price,
+.edition5-page .ticket-card.featured .ticket-features,
+.edition5-page .ticket-card.featured .cart-stepper,
+.edition5-page .ticket-card.featured .cart-stepper button { color: #ffffff; }
+.edition5-page .ticket-card.featured .ticket-badge { color: #ffffff; border-color: #ffffff; }
+.edition5-page .ticket-card.featured .cart-stepper button { border-color: #ffffff; }
+.edition5-page .ticket-card.featured .btn-gold { background: #0a2a15 !important; color: #ffffff !important; }
+
+/* ---------- Édition 5 — journal éditorial ---------- */
+.e5-journal { padding-top: 40px; }
+.e5-manifesto {
+  max-width: 860px;
+  margin: 0 auto 90px;
+  text-align: center;
+}
+.e5-manifesto h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.12;
+  color: var(--ink);
+  margin: 14px 0 22px;
+  font-weight: 700;
+}
+.e5-manifesto h2 em { color: #14582d; font-style: italic; }
+.e5-manifesto p {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--ink-muted);
+  max-width: 720px;
+  margin: 0 auto;
+}
+.e5-ornament {
+  display: block;
+  width: 72px;
+  height: 2px;
+  margin: 34px auto 0;
+  background: linear-gradient(90deg, transparent, #14582d, transparent);
+}
+.e5-chapter {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 72px;
+  max-width: 1180px;
+  margin: 0 auto 110px;
+}
+.e5-chapter.reverse { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); }
+.e5-chapter.reverse .e5-chapter-media { order: 2; }
+.e5-chapter-media { position: relative; margin: 0; }
+.e5-chapter-media::before {
+  content: "";
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+  border: 1px solid #14582d;
+  border-radius: 22px;
+  opacity: 0.55;
+  z-index: 0;
+}
+.e5-chapter.reverse .e5-chapter-media::before { inset: 18px 18px -18px -18px; }
+.e5-chapter-media img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  box-shadow: 0 30px 60px -28px rgba(13, 58, 31, 0.55);
+}
+.e5-chapter-text { position: relative; }
+.e5-chapter-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 84px;
+  line-height: 1;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #14582d;
+  opacity: 0.55;
+  margin-bottom: 6px;
+}
+.e5-chapter-text h3 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 10px 0 18px;
+}
+.e5-chapter-text p {
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--ink-muted);
+  margin: 0 0 14px;
+}
+.e5-quote {
+  margin: 20px 0 110px;
+  padding: 72px 32px;
+  text-align: center;
+  background: #0d3a1f;
+  border-radius: 28px;
+}
+.e5-quote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(26px, 4.2vw, 46px);
+  line-height: 1.35;
+  color: #ffffff;
+}
+.e5-pillars {
+  list-style: none;
+  margin: 8px 0 22px;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.e5-pillars li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border-left: 3px solid #14582d;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0 12px 12px 0;
+}
+.e5-pillars strong {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: #14582d;
+}
+.e5-pillars span { font-size: 15px; line-height: 1.6; color: var(--ink-muted); }
+.e5-teaser strong { color: #14582d; }
+.e5-cta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 15px 34px;
+  background: #14582d;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.e5-cta:hover { background: #0d3a1f; transform: translateY(-2px); }
+.e5-final {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.e5-final h3 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 44px);
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.e5-final p { font-size: 17px; color: var(--ink-muted); margin: 0 0 14px; }
+
+@media (max-width: 960px) {
+  .e5-manifesto { margin-bottom: 64px; }
+  .e5-chapter,
+  .e5-chapter.reverse {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
   }
-  50% {
-    opacity: 1;
-  }
-}
-
-.edition5-page .section {
-  background: transparent;
-}
-
-.edition5-page .section-heading h2,
-.edition5-page .about-text h2,
-.edition5-page .about-text h3 {
-  color: #f2fbf4;
-}
-
-.edition5-page .section-heading p,
-.edition5-page .about-text p {
-  color: rgba(242, 251, 244, 0.78);
-}
-
-.edition5-page .eyebrow-label {
-  color: #8fe0a8;
-}
-
-.edition5-page .payment-note {
-  color: rgba(242, 251, 244, 0.78);
-}
-
-.edition5-page .payment-note strong {
-  color: #8fe0a8;
+  .e5-chapter.reverse .e5-chapter-media { order: 0; }
+  .e5-chapter-media { max-width: 460px; margin: 0 auto; width: 100%; }
+  .e5-chapter-media::before,
+  .e5-chapter.reverse .e5-chapter-media::before { inset: 12px -10px -12px 10px; }
+  .e5-chapter-num { font-size: 64px; }
+  .e5-quote { padding: 52px 24px; margin-bottom: 80px; }
 }
