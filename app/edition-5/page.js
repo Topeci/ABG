@@ -2,6 +2,7 @@ import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
 import TicketBooking from "../components/TicketBooking";
 import Countdown from "../components/Countdown";
+import BackToTop from "../components/BackToTop";
 
 export const metadata = {
   title: "Édition 5 — Festival — Indénié Brunch",
@@ -286,6 +287,7 @@ export default function Edition5Page() {
       </section>
 
       <SiteFooter />
+      <BackToTop />
     </main>
   );
 }
