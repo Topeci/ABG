@@ -14,7 +14,7 @@ export default function BilletteriePage() {
 
       <div className="billetterie-banner">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/billetterie-banner.jpg" alt="Indénié Brunch — Dress code tout blanc" />
+        <img src="/images/billetterie-banner-16h.jpg" alt="Indénié Brunch — Dress code tout blanc" />
       </div>
 
       <section className="section" style={{ paddingTop: 56 }}>
