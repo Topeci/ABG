@@ -1,3 +1,4 @@
+import Link from "next/link";
 import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
 import VisitExplorer from "../components/VisitExplorer";
@@ -28,6 +29,7 @@ function Listing({ id, title, lead, items, emptyText, cta }) {
                 <span>{h.type}</span>
                 <b>{h.name}</b>
                 {h.price && <i>{h.price}</i>}
+                {h.href && <Link href={h.href}>{cta} →</Link>}
                 {h.url && (
                   <a href={h.url} target="_blank" rel="noopener noreferrer">
                     {cta} →
@@ -55,7 +57,7 @@ export default function VisitPage() {
         lead="Dors à Abengourou, vis la fête sans stress"
         items={LODGINGS}
         emptyText="Notre sélection d'hôtels arrive très bientôt."
-        cta="Voir & réserver"
+        cta="Découvrir"
       />
       <Listing
         id="se-regaler"

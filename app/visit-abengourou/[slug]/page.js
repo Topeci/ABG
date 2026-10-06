@@ -4,12 +4,12 @@ import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import VisitFX from "../../components/VisitFX";
 import PhotoLightbox from "../../components/PhotoLightbox";
-import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE, MUSEE } from "../../../lib/visit";
+import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE, MUSEE, VILLA } from "../../../lib/visit";
 
-const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS, "fete-de-l-igname": IGNAME, "cathedrale-sainte-therese": BASILIQUE, "musee-binger-zaranou": MUSEE };
+const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS, "fete-de-l-igname": IGNAME, "cathedrale-sainte-therese": BASILIQUE, "musee-binger-zaranou": MUSEE, "villa-belle-etape": VILLA };
 
 export function generateStaticParams() {
-  return PLACES.filter((p) => p.page).map((p) => ({ slug: p.slug }));
+  return [...PLACES.filter((p) => p.page).map((p) => ({ slug: p.slug })), { slug: "villa-belle-etape" }];
 }
 
 export function generateMetadata({ params }) {
@@ -79,7 +79,8 @@ export default function PlacePage({ params }) {
         <h2>Viens vivre Abengourou</h2>
         <p>Rendez-vous le 19 décembre pour l&apos;Indénié Brunch, Édition 5.</p>
         <div>
-          <Link href="/billetterie" className="btn-gold">Réserver ma place</Link>
+          {d.phone && <a href={`tel:${d.phone}`} className="btn-gold">Appeler la villa</a>}
+          <Link href="/billetterie" className={d.phone ? "btn-line" : "btn-gold"}>Réserver ma place</Link>
           <Link href="/visit-abengourou" className="btn-line">Voir les autres lieux</Link>
         </div>
       </section>
