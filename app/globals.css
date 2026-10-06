@@ -2266,3 +2266,6 @@ a.vc:hover { transform: translateY(-4px); }
 }
 @media (prefers-reduced-motion: reduce) { .vc-track { animation: none; } .vc-marquee { overflow-x: auto; } }
 .place-gallery .edition-photos-grid { grid-template-columns: repeat(2, 1fr); }
+.place-figure { margin: 18px 0 8px; max-width: 280px; }
+.place-figure img { width: 100%; border-radius: 14px; display: block; }
+.place-figure figcaption { font-size: 13px; color: #8a6a4f; font-style: italic; margin-top: 6px; }

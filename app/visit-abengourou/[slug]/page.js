@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import PhotoLightbox from "../../components/PhotoLightbox";
-import { PLACES, PALAIS } from "../../../lib/visit";
+import { PLACES, PALAIS, HIPPOS } from "../../../lib/visit";
 
-const PAGES = { "palais-royal": PALAIS };
+const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS };
 
 export function generateStaticParams() {
   return PLACES.filter((p) => p.page).map((p) => ({ slug: p.slug }));
@@ -55,6 +55,13 @@ export default function PlacePage({ params }) {
             {s.text.map((t, i) => (
               <p key={i}>{t}</p>
             ))}
+            {s.figure && (
+              <figure className="place-figure">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.figure.src} alt={s.figure.alt} />
+                <figcaption>{s.figure.caption}</figcaption>
+              </figure>
+            )}
           </section>
         ))}
       </article>
@@ -62,7 +69,7 @@ export default function PlacePage({ params }) {
       <section className="visit-sec place-gallery">
         <h2>En images</h2>
         <PhotoLightbox photos={d.gallery.map((g) => g.src)} title={d.title} />
-        <p className="place-note">{d.archiveNote}</p>
+        {d.archiveNote && <p className="place-note">{d.archiveNote}</p>}
       </section>
 
       <section className="place-cta">
