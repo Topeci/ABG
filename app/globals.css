@@ -2269,3 +2269,14 @@ a.vc:hover { transform: translateY(-4px); }
 .place-figure { margin: 18px 0 8px; max-width: 280px; }
 .place-figure img { width: 100%; border-radius: 14px; display: block; }
 .place-figure figcaption { font-size: 13px; color: #8a6a4f; font-style: italic; margin-top: 6px; }
+/* Carrousel manuel : défilement libre, flèches, glisser */
+.vc-carousel { position: relative; }
+.vc-scroll { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity; padding: 6px 4px 22px; scrollbar-width: none; cursor: grab; -webkit-overflow-scrolling: touch; }
+.vc-scroll::-webkit-scrollbar { display: none; }
+.vc-scroll:active { cursor: grabbing; }
+.vc-scroll .vc { scroll-snap-align: start; user-select: none; -webkit-user-drag: none; }
+.vc-arrow { position: absolute; top: 42%; z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: #733b1a; font-size: 28px; line-height: 1; box-shadow: 0 4px 16px rgba(0,0,0,.25); cursor: pointer; }
+.vc-arrow:hover { background: #733b1a; color: #fff; }
+.vc-prev { left: -6px; }
+.vc-next { right: -6px; }
+@media (max-width: 700px) { .vc-arrow { width: 38px; height: 38px; font-size: 24px; } .vc-prev { left: 2px; } .vc-next { right: 2px; } }

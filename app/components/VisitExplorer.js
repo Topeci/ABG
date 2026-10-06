@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { CATEGORIES } from "../../lib/visit";
 
@@ -29,6 +29,8 @@ function Card({ p }) {
 export default function VisitExplorer({ places }) {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("Tout");
+  const scroller = useRef(null);
+  const drag = useRef({ down: false, x: 0, left: 0, moved: false });
   const filtering = q.trim() !== "" || cat !== "Tout";
 
   const list = useMemo(() => {
@@ -39,6 +41,34 @@ export default function VisitExplorer({ places }) {
         (!s || (p.name + " " + p.category + " " + p.teaser).toLowerCase().includes(s))
     );
   }, [q, cat, places]);
+
+  function slide(dir) {
+    const el = scroller.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.max(240, el.clientWidth * 0.8), behavior: "smooth" });
+  }
+  function onDown(e) {
+    if (e.pointerType !== "mouse") return;
+    const el = scroller.current;
+    drag.current = { down: true, x: e.clientX, left: el.scrollLeft, moved: false };
+  }
+  function onMove(e) {
+    const d = drag.current;
+    if (!d.down) return;
+    const dx = e.clientX - d.x;
+    if (Math.abs(dx) > 5) d.moved = true;
+    scroller.current.scrollLeft = d.left - dx;
+  }
+  function onUp() {
+    drag.current.down = false;
+  }
+  function onClickCapture(e) {
+    if (drag.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      drag.current.moved = false;
+    }
+  }
 
   function go() {
     document.getElementById("a-voir")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -109,12 +139,26 @@ export default function VisitExplorer({ places }) {
             ))}
           </div>
         ) : (
-          <div className="vc-marquee">
-            <div className="vc-track">
-              {[...list, ...list].map((p, i) => (
-                <Card key={p.slug + i} p={p} />
+          <div className="vc-carousel">
+            <button type="button" className="vc-arrow vc-prev" onClick={() => slide(-1)} aria-label="Lieux précédents">
+              ‹
+            </button>
+            <div
+              className="vc-scroll"
+              ref={scroller}
+              onPointerDown={onDown}
+              onPointerMove={onMove}
+              onPointerUp={onUp}
+              onPointerLeave={onUp}
+              onClickCapture={onClickCapture}
+            >
+              {list.map((p) => (
+                <Card key={p.slug} p={p} />
               ))}
             </div>
+            <button type="button" className="vc-arrow vc-next" onClick={() => slide(1)} aria-label="Lieux suivants">
+              ›
+            </button>
           </div>
         )}
       </section>
