@@ -5,9 +5,9 @@ import SiteFooter from "../../components/SiteFooter";
 import VisitFX from "../../components/VisitFX";
 import PhotoSlider from "../../components/PhotoSlider";
 import PhotoLightbox from "../../components/PhotoLightbox";
-import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE, MUSEE, VILLA } from "../../../lib/visit";
+import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE, MUSEE, VILLA, ROCHERS } from "../../../lib/visit";
 
-const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS, "fete-de-l-igname": IGNAME, "cathedrale-sainte-therese": BASILIQUE, "musee-binger-zaranou": MUSEE, "villa-belle-etape": VILLA };
+const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS, "fete-de-l-igname": IGNAME, "cathedrale-sainte-therese": BASILIQUE, "musee-binger-zaranou": MUSEE, "villa-belle-etape": VILLA, "rochers-abengourou": ROCHERS };
 
 export function generateStaticParams() {
   return [...PLACES.filter((p) => p.page).map((p) => ({ slug: p.slug })), { slug: "villa-belle-etape" }];
