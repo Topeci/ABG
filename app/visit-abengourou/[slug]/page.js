@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import PhotoLightbox from "../../components/PhotoLightbox";
-import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE } from "../../../lib/visit";
+import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE, MUSEE } from "../../../lib/visit";
 
-const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS, "fete-de-l-igname": IGNAME, "cathedrale-sainte-therese": BASILIQUE };
+const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS, "fete-de-l-igname": IGNAME, "cathedrale-sainte-therese": BASILIQUE, "musee-binger-zaranou": MUSEE };
 
 export function generateStaticParams() {
   return PLACES.filter((p) => p.page).map((p) => ({ slug: p.slug }));
@@ -66,11 +66,13 @@ export default function PlacePage({ params }) {
         ))}
       </article>
 
+      {d.gallery.length > 0 && (
       <section className="visit-sec place-gallery">
         <h2>En images</h2>
         <PhotoLightbox photos={d.gallery.map((g) => g.src)} title={d.title} />
         {d.archiveNote && <p className="place-note">{d.archiveNote}</p>}
       </section>
+      )}
 
       <section className="place-cta">
         <h2>Viens vivre Abengourou</h2>

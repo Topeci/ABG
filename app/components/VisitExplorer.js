@@ -1,8 +1,7 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import { CATEGORIES } from "../../lib/visit";
 
 function Card({ p }) {
   const imgStyle = p.image ? { backgroundImage: `url(${p.image})` } : undefined;
@@ -30,20 +29,8 @@ function Card({ p }) {
 }
 
 export default function VisitExplorer({ places }) {
-  const [q, setQ] = useState("");
-  const [cat, setCat] = useState("Tout");
   const scroller = useRef(null);
   const drag = useRef({ down: false, x: 0, left: 0, moved: false });
-  const filtering = q.trim() !== "" || cat !== "Tout";
-
-  const list = useMemo(() => {
-    const s = q.trim().toLowerCase();
-    return places.filter(
-      (p) =>
-        (cat === "Tout" || p.category === cat) &&
-        (!s || (p.name + " " + p.category + " " + p.teaser).toLowerCase().includes(s))
-    );
-  }, [q, cat, places]);
 
   function slide(dir) {
     const el = scroller.current;
@@ -52,8 +39,7 @@ export default function VisitExplorer({ places }) {
   }
   function onDown(e) {
     if (e.pointerType !== "mouse") return;
-    const el = scroller.current;
-    drag.current = { down: true, x: e.clientX, left: el.scrollLeft, moved: false };
+    drag.current = { down: true, x: e.clientX, left: scroller.current.scrollLeft, moved: false };
   }
   function onMove(e) {
     const d = drag.current;
@@ -73,10 +59,6 @@ export default function VisitExplorer({ places }) {
     }
   }
 
-  function go() {
-    document.getElementById("a-voir")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
   return (
     <>
       <header className="visit-hero">
@@ -87,83 +69,34 @@ export default function VisitExplorer({ places }) {
             <br />
             Abengourou
           </h1>
-          <p>
-            Cité royale, terre agni, capitale du cacao et du café. Viens pour la
-            fête, reste pour la ville.
-          </p>
-      <form
-        className="visit-search"
-        onSubmit={(e) => {
-          e.preventDefault();
-          go();
-        }}
-      >
-        <input
-          type="search"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Que veux-tu vivre ? Palais, musée, nature…"
-          aria-label="Rechercher un lieu ou une activité"
-        />
-        <button type="submit">Explorer</button>
-      </form>
-      <div className="visit-chips">
-        {["Tout", ...CATEGORIES].map((c) => (
-          <button
-            key={c}
-            type="button"
-            className={c === cat ? "on" : ""}
-            onClick={() => {
-              setCat(c);
-              go();
-            }}
-          >
-            {c}
-          </button>
-        ))}
-      </div>
+          <p>Cité royale, terre agni, capitale du cacao et du café.</p>
         </div>
       </header>
-
-      <div className="visit-band">
-        <b>1745</b>
-        <span>Un royaume, des siècles d&apos;histoire, une jeunesse debout.</span>
-      </div>
 
       <section id="a-voir" className="visit-sec">
         <h2>À voir &amp; à vivre</h2>
         <p className="visit-lead">Les lieux et traditions qui font l&apos;Indénié</p>
-        {list.length === 0 ? (
-          <p className="visit-empty">Aucun résultat pour cette recherche.</p>
-        ) : filtering || list.length < 4 ? (
-          <div className="vc-grid">
-            {list.map((p) => (
+        <div className="vc-carousel">
+          <button type="button" className="vc-arrow vc-prev" onClick={() => slide(-1)} aria-label="Lieux précédents">
+            ‹
+          </button>
+          <div
+            className="vc-scroll"
+            ref={scroller}
+            onPointerDown={onDown}
+            onPointerMove={onMove}
+            onPointerUp={onUp}
+            onPointerLeave={onUp}
+            onClickCapture={onClickCapture}
+          >
+            {places.map((p) => (
               <Card key={p.slug} p={p} />
             ))}
           </div>
-        ) : (
-          <div className="vc-carousel">
-            <button type="button" className="vc-arrow vc-prev" onClick={() => slide(-1)} aria-label="Lieux précédents">
-              ‹
-            </button>
-            <div
-              className="vc-scroll"
-              ref={scroller}
-              onPointerDown={onDown}
-              onPointerMove={onMove}
-              onPointerUp={onUp}
-              onPointerLeave={onUp}
-              onClickCapture={onClickCapture}
-            >
-              {list.map((p) => (
-                <Card key={p.slug} p={p} />
-              ))}
-            </div>
-            <button type="button" className="vc-arrow vc-next" onClick={() => slide(1)} aria-label="Lieux suivants">
-              ›
-            </button>
-          </div>
-        )}
+          <button type="button" className="vc-arrow vc-next" onClick={() => slide(1)} aria-label="Lieux suivants">
+            ›
+          </button>
+        </div>
       </section>
     </>
   );

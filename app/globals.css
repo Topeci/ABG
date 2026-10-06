@@ -2191,10 +2191,10 @@ img {
 /* ===== Visit Abengourou ===== */
 .visit-page { background: #fff; }
 .visit-hero {
-  min-height: 880px;
+  min-height: 720px;
   background: linear-gradient(rgba(10,30,60,.55), rgba(10,30,60,.22) 55%, rgba(10,30,60,0) 80%),
     url(/images/visit/hero-hotel-de-ville.jpg) center bottom / cover;
-  color: #fff; text-align: center; padding: 90px 20px 340px;
+  color: #fff; text-align: center; padding: 110px 20px 300px;
 }
 .visit-hero-inner { max-width: 760px; margin: 0 auto; }
 .visit-eyebrow { letter-spacing: 4px; font-size: 12px; color: #f1d3a8; text-transform: uppercase; }
@@ -2258,7 +2258,7 @@ a.vc:hover { transform: translateY(-4px); }
 .place-cta p { color: #8a6a4f; margin-bottom: 20px; }
 .place-cta div { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 @media (max-width: 700px) {
-  .visit-hero { min-height: 640px; padding-bottom: 200px; background-size: 100% auto; background-repeat: no-repeat; background-color: #2f7fd0; }
+  .visit-hero { min-height: 560px; padding: 90px 20px 200px; background-size: 100% auto; background-repeat: no-repeat; background-color: #2f7fd0; }
   .vc { width: 170px; height: 235px; }
   .place-facts { grid-template-columns: repeat(2, 1fr); margin: -24px 16px 0; }
   .place-facts div:nth-child(3) { border-left: 0; }
