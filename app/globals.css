@@ -18,7 +18,7 @@ body {
 }
 
 body {
-  background: #F2F2F2;
+  background: #FFFFFF;
   color: var(--ink);
   font-family: var(--font-body);
 }
@@ -86,7 +86,7 @@ img {
 
 /* Nav */
 .nav {
-  background: #F2F2F2;
+  background: #FFFFFF;
   padding: 16px 64px;
   display: flex;
   align-items: center;
@@ -261,7 +261,7 @@ img {
 /* Section basics */
 .section {
   padding: 100px 64px;
-  background: #F2F2F2;
+  background: #FFFFFF;
 }
 .eyebrow-label {
   font-size: 12px;
@@ -1012,7 +1012,7 @@ img {
 
 /* Newsletter + footer */
 .site-footer {
-  background: #F2F2F2;
+  background: #FFFFFF;
   border-top: 1px solid rgba(115, 59, 26, 0.1);
 }
 .newsletter {
@@ -1629,7 +1629,7 @@ img {
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    background: #f2f2f2;
+    background: #FFFFFF;
     border-top: 1px solid rgba(115, 59, 26, 0.08);
     margin-top: 16px;
     padding-top: 8px;
