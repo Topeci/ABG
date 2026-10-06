@@ -20,12 +20,19 @@ export default function NavBar() {
         <Link href="/">Accueil</Link>
         <Link href="/evenement">L&apos;événement</Link>
         <Link href="/programme">Programme</Link>
-        <Link href="/visit-abengourou">Visit Abengourou</Link>
         <Link href="/galerie">Galerie</Link>
         <Link href="/billetterie">Billetterie</Link>
         <Link href="/actus">Actus</Link>
         <Link href="/contact">Contact</Link>
         <Link href="/partenaire">Partenaire</Link>
+        <Link href="/visit-abengourou" className="nav-visit">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="7" cy="16" r="4" />
+            <circle cx="17" cy="16" r="4" />
+            <path d="M7 12V5h3.5v7M13.5 12V5H17v7M11 15h2" />
+          </svg>
+          Visit Abengourou
+        </Link>
       </div>
       <div className="nav-actions">
         <CartBadge />

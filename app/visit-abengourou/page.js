@@ -11,7 +11,7 @@ export const metadata = {
 
 function Listing({ id, title, lead, items, emptyText, cta }) {
   return (
-    <section id={id} className="visit-sec">
+    <section id={id} className="visit-sec reveal">
       <h2>{title}</h2>
       <p className="visit-lead">{lead}</p>
       {items.length === 0 ? (
@@ -67,7 +67,7 @@ export default function VisitPage() {
       />
 
       {VIDEOS.length > 0 && (
-        <section id="videos" className="visit-sec">
+        <section id="videos" className="visit-sec reveal">
           <h2>Abengourou en vidéo</h2>
           <p className="visit-lead">La ville en mouvement</p>
           <div className="vv-grid">

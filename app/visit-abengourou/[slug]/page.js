@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
+import VisitFX from "../../components/VisitFX";
 import PhotoLightbox from "../../components/PhotoLightbox";
 import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE, MUSEE } from "../../../lib/visit";
 
@@ -39,7 +40,7 @@ export default function PlacePage({ params }) {
         </div>
       </header>
 
-      <section className="place-facts">
+      <section className="place-facts reveal">
         {d.facts.map((f) => (
           <div key={f.k}>
             <span>{f.k}</span>
@@ -48,7 +49,7 @@ export default function PlacePage({ params }) {
         ))}
       </section>
 
-      <article className="place-body">
+      <article className="place-body reveal">
         {d.sections.map((s) => (
           <section key={s.title}>
             <h2>{s.title}</h2>
@@ -74,7 +75,7 @@ export default function PlacePage({ params }) {
       </section>
       )}
 
-      <section className="place-cta">
+      <section className="place-cta reveal">
         <h2>Viens vivre Abengourou</h2>
         <p>Rendez-vous le 19 décembre pour l&apos;Indénié Brunch, Édition 5.</p>
         <div>
@@ -82,6 +83,7 @@ export default function PlacePage({ params }) {
           <Link href="/visit-abengourou" className="btn-line">Voir les autres lieux</Link>
         </div>
       </section>
+      <VisitFX />
       <SiteFooter />
     </main>
   );
