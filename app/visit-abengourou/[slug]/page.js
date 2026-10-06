@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import VisitFX from "../../components/VisitFX";
+import PhotoSlider from "../../components/PhotoSlider";
 import PhotoLightbox from "../../components/PhotoLightbox";
 import { PLACES, PALAIS, HIPPOS, IGNAME, BASILIQUE, MUSEE, VILLA } from "../../../lib/visit";
 
@@ -70,7 +71,11 @@ export default function PlacePage({ params }) {
       {d.gallery.length > 0 && (
       <section className="visit-sec place-gallery">
         <h2>En images</h2>
-        <PhotoLightbox photos={d.gallery.map((g) => g.src)} title={d.title} />
+        {d.slider ? (
+          <PhotoSlider photos={d.gallery} />
+        ) : (
+          <PhotoLightbox photos={d.gallery.map((g) => g.src)} title={d.title} />
+        )}
         {d.archiveNote && <p className="place-note">{d.archiveNote}</p>}
       </section>
       )}
