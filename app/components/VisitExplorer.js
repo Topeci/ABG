@@ -73,6 +73,33 @@ export default function VisitExplorer({ places }) {
         </div>
       </header>
 
+      <section className="visit-intro">
+        <div className="visit-intro-text">
+          <span className="visit-intro-eyebrow">Bienvenue</span>
+          <h2>Abengourou, cité royale de l&apos;Indénié</h2>
+          <p>
+            Abengourou, c&apos;est d&apos;abord un petit campement de chasseurs, appelé
+            M&apos;Kpékro, à la fin du XIXe siècle. Son nom vient de l&apos;ashanti et
+            signifie « je n&apos;aime pas les histoires » : une appellation qui colle au
+            calme de la ville, surnommée la cité de la paix. Mian Kouadio, venu du
+            Ghana, en est considéré comme le fondateur.
+          </p>
+          <p>
+            Chef-lieu du centre de l&apos;Indénié en 1916, chef-lieu du département de
+            l&apos;Est dès 1963, la ville est aujourd&apos;hui le chef-lieu de la région de
+            l&apos;Indénié-Djuablin. Fief des Agni, un peuple originaire du Ghana arrivé
+            en Côte d&apos;Ivoire avec le grand groupe akan, elle garde la mémoire d&apos;un
+            royaume fondé en 1745, toujours vivant aujourd&apos;hui.
+          </p>
+        </div>
+        <ul className="visit-stats">
+          <li><b>1745</b><span>Fondation du royaume de l&apos;Indénié</span></li>
+          <li><b>210 km</b><span>d&apos;Abidjan, à l&apos;est du pays</span></li>
+          <li><b>455 104</b><span>habitants dans le département (2023)</span></li>
+          <li><b>6 920 km²</b><span>de superficie du département</span></li>
+        </ul>
+      </section>
+
       <section id="a-voir" className="visit-sec">
         <h2>À voir &amp; à vivre</h2>
         <p className="visit-lead">Les lieux et traditions qui font l&apos;Indénié</p>
