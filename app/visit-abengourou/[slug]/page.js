@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import PhotoLightbox from "../../components/PhotoLightbox";
-import { PLACES, PALAIS, HIPPOS } from "../../../lib/visit";
+import { PLACES, PALAIS, HIPPOS, IGNAME } from "../../../lib/visit";
 
-const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS };
+const PAGES = { "palais-royal": PALAIS, "hippopotames-aniassue": HIPPOS, "fete-de-l-igname": IGNAME };
 
 export function generateStaticParams() {
   return PLACES.filter((p) => p.page).map((p) => ({ slug: p.slug }));
