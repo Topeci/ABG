@@ -2280,3 +2280,26 @@ a.vc:hover { transform: translateY(-4px); }
 .vc-prev { left: -6px; }
 .vc-next { right: -6px; }
 @media (max-width: 700px) { .vc-arrow { width: 38px; height: 38px; font-size: 24px; } .vc-prev { left: 2px; } .vc-next { right: 2px; } }
+/* Grandes cartes blanches : photo en haut, texte dessous */
+.visit-page, .visit-page .visit-sec { background: #fff; }
+.vc { width: 340px; height: auto; padding: 0; background: #fff; color: #1f1a16; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-start; box-shadow: 0 8px 30px rgba(0,0,0,.10); border: 1px solid #f0ebe4; }
+.vc-plain { background: #fff; }
+.vc-img { height: 400px; background: #e9d9c4 center / cover no-repeat; }
+.vc-img-plain { background: linear-gradient(160deg, #bf814b, #5a3318); }
+.vc-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.vc .vc-cat { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #14582d; font-weight: 700; }
+.vc .vc-name { font-size: 22px; margin: 0; color: #1f1a16; font-family: Georgia, serif; line-height: 1.2; }
+.vc-teaser { font-size: 14px; line-height: 1.55; color: #6b5a4b; margin: 2px 0 0; }
+.vc-foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.vc-loc { color: #8a7a6a; }
+.vc .vc-more { color: #733b1a; font-weight: 700; font-style: normal; opacity: 1; margin: 0; }
+.vc .vc-soon { color: #a89a8a; font-style: normal; opacity: 1; margin: 0; }
+a.vc:hover { transform: translateY(-5px); box-shadow: 0 14px 38px rgba(0,0,0,.16); }
+.vc-scroll { gap: 22px; padding: 8px 6px 28px; }
+.vh-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+.vh { border-radius: 24px; border: 1px solid #f0ebe4; box-shadow: 0 8px 30px rgba(0,0,0,.10); }
+.vh-img { height: 260px; }
+.vh-body { padding: 18px 20px 22px; }
+.vh-body b { font-size: 20px; font-family: Georgia, serif; }
+@media (max-width: 700px) { .vc { width: 78vw; max-width: 320px; } .vc-img { height: 340px; } }
+.visit-page .site-footer { background: #fff; border-top: 1px solid #f0ebe4; }

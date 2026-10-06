@@ -5,24 +5,27 @@ import Link from "next/link";
 import { CATEGORIES } from "../../lib/visit";
 
 function Card({ p }) {
-  const style = p.image
-    ? { backgroundImage: `linear-gradient(180deg, transparent 45%, rgba(0,0,0,.78)), url(${p.image})` }
-    : undefined;
+  const imgStyle = p.image ? { backgroundImage: `url(${p.image})` } : undefined;
   const inner = (
     <>
-      <span className="vc-cat">{p.category}</span>
-      <b className="vc-name">{p.name}</b>
-      {p.page ? <em className="vc-more">Découvrir →</em> : <em className="vc-soon">Bientôt</em>}
+      <div className={`vc-img${p.image ? "" : " vc-img-plain"}`} style={imgStyle} />
+      <div className="vc-body">
+        <span className="vc-cat">{p.category}</span>
+        <b className="vc-name">{p.name}</b>
+        <p className="vc-teaser">{p.teaser}</p>
+        <div className="vc-foot">
+          <span className="vc-loc">📍 Abengourou</span>
+          {p.page ? <em className="vc-more">Découvrir →</em> : <em className="vc-soon">Bientôt</em>}
+        </div>
+      </div>
     </>
   );
   return p.page ? (
-    <Link href={`/visit-abengourou/${p.slug}`} className={`vc${p.image ? "" : " vc-plain"}`} style={style}>
+    <Link href={`/visit-abengourou/${p.slug}`} className="vc">
       {inner}
     </Link>
   ) : (
-    <div className={`vc${p.image ? "" : " vc-plain"}`} style={style}>
-      {inner}
-    </div>
+    <div className="vc">{inner}</div>
   );
 }
 
