@@ -2187,3 +2187,82 @@ img {
 }
 .billet-promo-quote { display: block; margin-top: 14px; font-style: italic; }
 @media (prefers-reduced-motion: reduce) { .splash-logo, .splash-star { animation: none; } }
+
+/* ===== Visit Abengourou ===== */
+.visit-page { background: #fff; }
+.visit-hero {
+  min-height: 880px;
+  background: linear-gradient(rgba(10,30,60,.55), rgba(10,30,60,.22) 55%, rgba(10,30,60,0) 80%),
+    url(/images/visit/hero-hotel-de-ville.jpg) center bottom / cover;
+  color: #fff; text-align: center; padding: 90px 20px 340px;
+}
+.visit-hero-inner { max-width: 760px; margin: 0 auto; }
+.visit-eyebrow { letter-spacing: 4px; font-size: 12px; color: #f1d3a8; text-transform: uppercase; }
+.visit-hero h1 { font-size: clamp(36px, 6vw, 60px); margin: 14px 0; font-family: Georgia, serif; line-height: 1.1; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+.visit-hero p { max-width: 560px; margin: 0 auto; line-height: 1.7; font-size: 15px; text-shadow: 0 1px 8px rgba(0,0,0,.6); }
+.visit-search { margin: 26px auto; display: flex; max-width: 600px; background: rgba(255,255,255,.96); border-radius: 60px; padding: 6px; }
+.visit-search input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 12px 18px; font-size: 14px; outline: none; color: #2a1a0e; font-family: inherit; }
+.visit-search button { background: #733b1a; color: #fff; border: 0; border-radius: 50px; padding: 12px 24px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.visit-chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.visit-chips button { border: 1px solid #f1d3a8; background: rgba(0,0,0,.3); color: #fff; border-radius: 30px; padding: 6px 14px; font-size: 13px; cursor: pointer; font-family: inherit; }
+.visit-chips button.on { background: #bf814b; border-color: #bf814b; }
+.visit-band { background: #14582d; color: #fff; text-align: center; padding: 34px 20px; display: flex; flex-direction: column; gap: 4px; }
+.visit-band b { font-size: 44px; font-family: Georgia, serif; color: #f1d3a8; }
+.visit-sec { max-width: 1100px; margin: 0 auto; padding: 60px 20px 10px; background: #fff; }
+.visit-sec h2 { font-family: Georgia, serif; font-size: 34px; color: #733b1a; text-align: center; margin: 0; }
+.visit-lead { text-align: center; color: #8a6a4f; margin: 8px 0 28px; }
+.visit-empty { text-align: center; color: #8a6a4f; padding: 30px 0; border: 1px dashed #e4d3bd; border-radius: 16px; }
+.vc { position: relative; flex: 0 0 auto; width: 230px; height: 300px; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; background-size: cover; background-position: center; box-shadow: 0 10px 26px rgba(115,59,26,.25); text-decoration: none; overflow: hidden; }
+.vc-plain { background: linear-gradient(160deg, #8a4b1f, #1a120b); }
+.vc-cat { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #f1d3a8; }
+.vc-name { font-size: 18px; margin-top: 4px; }
+.vc-more, .vc-soon { font-style: normal; font-size: 12px; margin-top: 8px; color: #fff; opacity: .9; }
+.vc-soon { opacity: .6; }
+a.vc { transition: transform .2s; }
+a.vc:hover { transform: translateY(-4px); }
+.vc-grid { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+.vc-marquee { overflow: hidden; margin: 0 -20px; }
+.vc-track { display: flex; gap: 16px; width: max-content; animation: vc-scroll 45s linear infinite; padding: 6px 0 20px; }
+.vc-marquee:hover .vc-track { animation-play-state: paused; }
+@keyframes vc-scroll { to { transform: translateX(calc(-50% - 8px)); } }
+.vh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.vh { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(115,59,26,.15); }
+.vh-img { height: 150px; background: linear-gradient(135deg, #e9d9c4, #bf814b) center / cover; }
+.vh-body { padding: 14px; display: flex; flex-direction: column; gap: 4px; }
+.vh-body span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #14582d; }
+.vh-body i { font-size: 13px; color: #8a6a4f; }
+.vh-body a { color: #733b1a; font-weight: 600; font-size: 13px; margin-top: 6px; text-decoration: none; }
+.vv-grid { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.vv { width: 100%; max-width: 420px; height: 240px; border-radius: 18px; background: #1a120b center / cover; color: #fff; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; text-decoration: none; position: relative; }
+.vv em { font-style: normal; font-size: 12px; opacity: .85; }
+.vv-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,.9); color: #733b1a; display: flex; align-items: center; justify-content: center; }
+.visit-page .visit-sec:last-of-type { padding-bottom: 70px; }
+/* Fiche d'un lieu */
+.place-hero { min-height: 520px; background-size: cover; background-position: center; color: #fff; display: flex; align-items: flex-end; padding: 90px 20px 50px; }
+.place-hero-inner { max-width: 900px; margin: 0 auto; width: 100%; }
+.place-back { color: #f1d3a8; font-size: 14px; text-decoration: none; }
+.place-hero h1 { font-family: Georgia, serif; font-size: clamp(32px, 5.5vw, 56px); margin: 12px 0 8px; line-height: 1.1; }
+.place-hero p { max-width: 560px; font-size: 16px; opacity: .95; }
+.place-facts { max-width: 900px; margin: -30px auto 0; position: relative; display: grid; grid-template-columns: repeat(4, 1fr); background: #14582d; color: #fff; border-radius: 16px; overflow: hidden; }
+.place-facts div { padding: 18px 14px; text-align: center; border-left: 1px solid rgba(255,255,255,.15); }
+.place-facts div:first-child { border-left: 0; }
+.place-facts span { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #f1d3a8; }
+.place-facts b { font-size: 16px; }
+.place-body { max-width: 760px; margin: 0 auto; padding: 50px 20px 10px; }
+.place-body h2 { font-family: Georgia, serif; font-size: 28px; color: #733b1a; margin: 34px 0 10px; }
+.place-body p { font-size: 16px; line-height: 1.85; color: #4a3626; margin: 0 0 14px; }
+.place-note { text-align: center; font-size: 13px; color: #8a6a4f; margin-top: 12px; font-style: italic; }
+.place-gallery .edition-photos-grid { margin-top: 24px; }
+.place-cta { text-align: center; padding: 60px 20px 80px; }
+.place-cta h2 { font-family: Georgia, serif; font-size: 32px; color: #733b1a; margin: 0 0 8px; }
+.place-cta p { color: #8a6a4f; margin-bottom: 20px; }
+.place-cta div { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 700px) {
+  .visit-hero { min-height: 640px; padding-bottom: 200px; background-size: 100% auto; background-repeat: no-repeat; background-color: #2f7fd0; }
+  .vc { width: 170px; height: 235px; }
+  .place-facts { grid-template-columns: repeat(2, 1fr); margin: -24px 16px 0; }
+  .place-facts div:nth-child(3) { border-left: 0; }
+  .place-facts div:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.15); }
+}
+@media (prefers-reduced-motion: reduce) { .vc-track { animation: none; } .vc-marquee { overflow-x: auto; } }
+.place-gallery .edition-photos-grid { grid-template-columns: repeat(2, 1fr); }

@@ -20,6 +20,7 @@ export default function NavBar() {
         <Link href="/">Accueil</Link>
         <Link href="/evenement">L&apos;événement</Link>
         <Link href="/programme">Programme</Link>
+        <Link href="/visit-abengourou">Visit Abengourou</Link>
         <Link href="/galerie">Galerie</Link>
         <Link href="/billetterie">Billetterie</Link>
         <Link href="/actus">Actus</Link>
