@@ -55,7 +55,7 @@ export default function VisitPage() {
         lead="Dors à Abengourou, vis la fête sans stress"
         items={LODGINGS}
         emptyText="Notre sélection d'hôtels arrive très bientôt."
-        cta="Réserver"
+        cta="Voir & réserver"
       />
       <Listing
         id="se-regaler"

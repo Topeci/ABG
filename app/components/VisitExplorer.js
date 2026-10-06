@@ -43,17 +43,10 @@ function Card({ p, saved, onToggle, hot }) {
   );
 }
 
-const MOODS = [
-  { label: "🏛️ Culture & histoire", cats: ["Culture", "Patrimoine", "Histoire"] },
-  { label: "🌿 Nature", cats: ["Nature"] },
-  { label: "🥁 Fête & traditions", cats: ["Tradition"] },
-];
-
 export default function VisitExplorer({ places }) {
   const scroller = useRef(null);
   const [saved, setSaved] = useState([]);
   const [panel, setPanel] = useState(false);
-  const [hot, setHot] = useState(null);
   const drag = useRef({ down: false, x: 0, left: 0, moved: false });
 
   useEffect(() => {
@@ -71,17 +64,6 @@ export default function VisitExplorer({ places }) {
       } catch (e) {}
       return next;
     });
-  }
-
-  function pickMood(cats) {
-    const target = places.find((p) => cats.includes(p.category));
-    if (!target) return;
-    const el = scroller.current;
-    const card = el && el.querySelector(`[data-slug="${target.slug}"]`);
-    document.getElementById("a-voir-cartes")?.scrollIntoView({ behavior: "smooth", block: "center" });
-    if (card) el.scrollTo({ left: Math.max(0, card.offsetLeft - 24), behavior: "smooth" });
-    setHot(target.slug);
-    setTimeout(() => setHot(null), 2600);
   }
 
   const savedPlaces = places.filter((p) => saved.includes(p.slug));
@@ -162,14 +144,6 @@ export default function VisitExplorer({ places }) {
       <section id="a-voir" className="visit-sec reveal">
         <h2>À voir &amp; à vivre</h2>
         <p className="visit-lead">Les lieux et traditions qui font l&apos;Indénié</p>
-        <div className="visit-moods">
-          <span>Aujourd&apos;hui, j&apos;ai envie de…</span>
-          {MOODS.map((m) => (
-            <button key={m.label} type="button" onClick={() => pickMood(m.cats)}>
-              {m.label}
-            </button>
-          ))}
-        </div>
         <div className="vc-carousel" id="a-voir-cartes">
           <button type="button" className="vc-arrow vc-prev" onClick={() => slide(-1)} aria-label="Lieux précédents">
             ‹
@@ -184,7 +158,7 @@ export default function VisitExplorer({ places }) {
             onClickCapture={onClickCapture}
           >
             {places.map((p) => (
-              <Card key={p.slug} p={p} saved={saved.includes(p.slug)} onToggle={toggle} hot={hot === p.slug} />
+              <Card key={p.slug} p={p} saved={saved.includes(p.slug)} onToggle={toggle} />
             ))}
           </div>
           <button type="button" className="vc-arrow vc-next" onClick={() => slide(1)} aria-label="Lieux suivants">
