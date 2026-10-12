@@ -2403,3 +2403,10 @@ a.vc:hover { transform: none; }
 @keyframes topbar-run { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .topbar-track { animation-duration: 120s; } }
 @media (max-width: 600px) { .topbar-set span { font-size: 12px; padding: 8px 16px; } }
+
+/* Banderole collée en haut, menu juste en dessous */
+:root { --topbar-h: 34px; }
+.topbar { position: sticky; top: 0; z-index: 30; height: var(--topbar-h); }
+.topbar-set span { line-height: 16px; }
+.nav { top: var(--topbar-h); }
+@media (max-width: 600px) { :root { --topbar-h: 32px; } }
