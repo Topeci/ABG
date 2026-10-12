@@ -26,7 +26,7 @@ export default function Home() {
   const currentTierIndex = STANDARD_TIERS.findIndex((t) => t.id === currentStandard.id);
   const nextTier = STANDARD_TIERS[currentTierIndex + 1];
   const doorTier = STANDARD_TIERS[STANDARD_TIERS.length - 1];
-  const latestActus = ACTUS.slice(0, 3);
+  const latestActus = ACTUS;
   const programmePreview = STEPS.slice(0, 3);
   const galeriePreview = EDITIONS.slice(-4);
   return (
@@ -237,7 +237,7 @@ export default function Home() {
             Voir toutes les actus
           </Link>
         </div>
-        <div className="news-grid-3">
+        <div className="news-grid-3 news-grid-home">
           {latestActus.map((a) => (
             <a key={a.id} href={a.url} target="_blank" rel="noopener noreferrer" className="news-card">
               {a.image ? (

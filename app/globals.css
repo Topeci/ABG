@@ -2410,3 +2410,5 @@ a.vc:hover { transform: none; }
 .topbar-set span { line-height: 16px; }
 .nav { top: var(--topbar-h); }
 @media (max-width: 600px) { :root { --topbar-h: 32px; } }
+
+@media (min-width: 901px) { .news-grid-home { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; } .news-grid-home h3 { font-size: 16px; } }
