@@ -5,6 +5,20 @@ import CartBadge from "./CartBadge";
 // Chaque onglet pointe vers une vraie page (route), plus d'ancres (#...).
 export default function NavBar() {
   return (
+    <>
+    <Link href="/billetterie" className="topbar" aria-label="Lieu dévoilé : Stade HKB, Abengourou, le 19 décembre 2026">
+      <div className="topbar-track" aria-hidden="true">
+        {[0, 1].map((k) => (
+          <div className="topbar-set" key={k}>
+            {[0, 1, 2].map((n) => (
+              <span key={n}>
+                📍 LIEU DÉVOILÉ : STADE HKB, ABENGOUROU <i>✦</i> 19 DÉCEMBRE 2026 · DÈS 16H <i>✦</i> TOUT EN BLANC <i>✦</i> RÉSERVE TA PLACE <i>✦</i>
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </Link>
     <nav className="nav">
       <Link href="/" className="nav-logo">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -41,5 +55,6 @@ export default function NavBar() {
         </Link>
       </div>
     </nav>
+    </>
   );
 }

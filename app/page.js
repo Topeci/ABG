@@ -62,7 +62,7 @@ export default function Home() {
           </div>
           <div className="practical-item">
             <span className="label" style={{ color: "#BF814B" }}>Lieu</span>
-            <span className="value" style={{ color: "#FAF6EE" }}>Abengourou</span>
+            <span className="value" style={{ color: "#FAF6EE" }}>Stade HKB, Abengourou</span>
           </div>
           <div className="practical-item">
             <span className="label" style={{ color: "#BF814B" }}>Dress code</span>

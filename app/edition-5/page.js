@@ -259,7 +259,7 @@ export default function Edition5Page() {
           </div>
           <div className="practical-item">
             <span className="label">Lieu</span>
-            <span className="value">Abengourou</span>
+            <span className="value">Stade HKB, Abengourou</span>
           </div>
           <div className="practical-item">
             <span className="label">Dress code</span>

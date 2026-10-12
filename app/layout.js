@@ -24,7 +24,7 @@ export const metadata = {
   },
   title: "Indénié Brunch — Abengourou",
   description:
-    "Le brunch en blanc de la jeunesse de l'Indénié à Abengourou, Côte d'Ivoire. Édition 5 le 19 décembre.",
+    "Le brunch en blanc de la jeunesse de l'Indénié, au Stade HKB d'Abengourou, Côte d'Ivoire. Édition 5 le 19 décembre.",
 };
 
 export default function RootLayout({ children }) {

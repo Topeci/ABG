@@ -2392,3 +2392,14 @@ a.vc:hover { transform: none; }
 .ps-dots button { width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 0; background: rgba(255,255,255,.5); cursor: pointer; }
 .ps-dots button.on { background: #fff; width: 22px; border-radius: 6px; }
 @media (max-width: 600px) { .ps { border-radius: 16px; } .ps-arrow { width: 38px; height: 38px; font-size: 24px; } .ps-slide { aspect-ratio: 1 / 1; } }
+
+/* Banderole d'annonce du lieu */
+.topbar { display: block; background: linear-gradient(90deg, #b3121f, #e11d2e, #b3121f); color: #fff; overflow: hidden; white-space: nowrap; position: relative; z-index: 21; text-decoration: none; }
+.topbar-track { display: flex; width: max-content; animation: topbar-run 38s linear infinite; }
+.topbar:hover .topbar-track { animation-play-state: paused; }
+.topbar-set { display: flex; flex: none; }
+.topbar-set span { padding: 9px 22px; font-size: 13px; font-weight: 700; letter-spacing: 1.4px; }
+.topbar-set i { font-style: normal; opacity: .75; margin: 0 14px; }
+@keyframes topbar-run { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .topbar-track { animation-duration: 120s; } }
+@media (max-width: 600px) { .topbar-set span { font-size: 12px; padding: 8px 16px; } }
