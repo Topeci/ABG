@@ -2,7 +2,7 @@ import Link from "next/link";
 import NavBar from "./components/NavBar";
 import SiteFooter from "./components/SiteFooter";
 import Countdown from "./components/Countdown";
-import { getCurrentStandardTier, STANDARD_INCLUDES, STANDARD_TIERS } from "../lib/pricing";
+import { getCurrentStandardTier, STANDARD_INCLUDES } from "../lib/pricing";
 import { ACTUS } from "../lib/actus";
 import { EDITIONS } from "../lib/editions";
 import { STEPS } from "../lib/programme";
@@ -12,20 +12,8 @@ function formatFCFA(n) {
   return n.toLocaleString("fr-FR") + " FCFA";
 }
 
-function formatDateFR(iso) {
-  if (!iso) return null;
-  return new Date(iso).toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    timeZone: "UTC",
-  });
-}
-
 export default function Home() {
   const currentStandard = getCurrentStandardTier();
-  const currentTierIndex = STANDARD_TIERS.findIndex((t) => t.id === currentStandard.id);
-  const nextTier = STANDARD_TIERS[currentTierIndex + 1];
-  const doorTier = STANDARD_TIERS[STANDARD_TIERS.length - 1];
   const latestActus = ACTUS;
   const programmePreview = STEPS.slice(0, 3);
   const galeriePreview = EDITIONS.slice(-4);
@@ -186,7 +174,6 @@ export default function Home() {
 
           <div className="billet-promo-pills">
             <div className="billet-promo-price">
-              <span className="billet-promo-price-tag">{currentStandard.shortLabel}</span>
               <span className="billet-promo-price-amount">{formatFCFA(currentStandard.amount)}</span>
             </div>
 
@@ -194,20 +181,6 @@ export default function Home() {
               Je réserve ma place
             </Link>
           </div>
-
-          {nextTier && (
-            <p className="billet-promo-urgency">
-              Le tarif passe à <strong>{formatFCFA(nextTier.amount)}</strong> dès
-              le {formatDateFR(currentStandard.until)} — réserve avant pour payer
-              moins cher.
-            </p>
-          )}
-
-          {doorTier && (
-            <p className="billet-promo-urgency">
-              Tarif jour J : <strong>{formatFCFA(doorTier.amount)}</strong>
-            </p>
-          )}
 
           <div className="billet-promo-perks">
             <span>✓ Paiement Wave &amp; Orange Money</span>

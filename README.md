@@ -30,7 +30,7 @@ jour le schéma.
 ## Billetterie
 
 - `/` section Billetterie : formulaire de réservation (app/components/TicketBooking.js)
-- `lib/pricing.js` : grille tarifaire qui fait foi — paliers Standard par date (prévente/dernière chance/tarif porte) + les 3 Salons VIP. C'est le seul endroit à modifier pour changer un prix ou une date de palier.
+- `lib/pricing.js` : grille tarifaire qui fait foi — billet Standard à tarif unique (3 000 FCFA, prévente terminée) + les 3 Salons VIP. C'est le seul endroit à modifier pour changer un prix ou une date de palier.
 - `/api/orders` : crée une commande en attente (le prix est recalculé côté serveur depuis `lib/pricing.js`, jamais pris du navigateur)
 - `/api/orders/confirm` : ⚠️ TEMPORAIRE, simule un paiement réussi — à remplacer par le vrai webhook CinetPay
 - `/api/tickets/checkin` : valide un billet scanné (utilisé par /scan). Un billet Standard = 1 scan max ; un billet Salon = jusqu'à 6 scans (compteur `checkin_count` / `max_checkins`)
