@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CartBadge from "./CartBadge";
 
 // Nav partagée par toutes les pages publiques du site.
 // Chaque onglet pointe vers une vraie page (route), plus d'ancres (#...).
@@ -49,7 +48,6 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="nav-actions">
-        <CartBadge />
         <Link href="/billetterie" className="btn-gold nav-cta">
           Réserver ma place
         </Link>

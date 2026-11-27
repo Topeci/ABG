@@ -280,8 +280,7 @@ export default function Edition5Page() {
         <TicketBooking />
         <div className="payment-note">
           <span>
-            Paiement sécurisé disponible via <strong>Wave</strong>, Orange Money et carte
-            bancaire
+            Billet Standard : <strong>achat sécurisé sur notre plateforme partenaire</strong>. Salons VIP : demande par WhatsApp.
           </span>
         </div>
       </section>

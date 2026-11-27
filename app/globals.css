@@ -2396,3 +2396,12 @@ a.vc:hover { transform: none; }
 @media (max-width: 600px) { :root { --topbar-h: 32px; } }
 
 @media (min-width: 901px) { .news-grid-home { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; } .news-grid-home h3 { font-size: 16px; } }
+
+/* Formulaire salons VIP → WhatsApp */
+.salon-form { max-width: 560px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid rgba(115,59,26,.14); border-radius: 20px; background: #fff; }
+.salon-form h3 { margin: 0; font-size: 22px; }
+.salon-form > p { margin: 0 0 6px; color: var(--ink-muted); font-size: 14px; }
+.salon-form label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.salon-form input, .salon-form select, .salon-form textarea { font: inherit; font-size: 15px; font-weight: 400; padding: 12px 14px; border: 1px solid rgba(115,59,26,.25); border-radius: 12px; background: #fff; color: var(--ink); }
+.salon-form-error { color: #b3121f; font-size: 13px; margin: 0; }
+.salon-form-submit { border: 0; cursor: pointer; text-align: center; background: #25d366; color: #fff; }

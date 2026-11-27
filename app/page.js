@@ -183,9 +183,8 @@ export default function Home() {
           </div>
 
           <div className="billet-promo-perks">
-            <span>✓ Paiement Wave &amp; Orange Money</span>
-            <span>✓ Billet avec QR code envoyé par email</span>
-            <span>✓ Salons VIP disponibles</span>
+            <span>✓ Achat sécurisé sur notre plateforme partenaire</span>
+            <span>✓ Salons VIP : réservation par WhatsApp</span>
           </div>
         </div>
       </section>
